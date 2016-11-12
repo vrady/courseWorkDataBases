@@ -54,7 +54,7 @@ namespace courseWorkDataBases.Controllers
             }
             else
             {
-                var existingGroup = _dbContext.Groups.FirstOrDefault(q => q.Id == id);
+                var existingGroup = _dbContext.Groups.FirstOrDefault(q => q.Id == group.Id);
                 existingGroup.Name = group.Name;
                 _dbContext.SaveChanges();
                 return new ObjectResult(existingGroup);
