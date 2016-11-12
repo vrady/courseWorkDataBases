@@ -1,0 +1,9 @@
+﻿<div class="container">
+    <h2>List of Groups</h2>
+    <ul class="collection">
+        <li ng-repeat="group in groups" class="collection-item">
+            <p>ID: {{group.id}} <br /> Name: {{group.name}}</p>
+        </li>
+    </ul>
+    <button class="btn-default"><a href="/groups/add">Add new group</a></button>
+</div>
