@@ -1,4 +1,4 @@
-﻿(() => {
+﻿(function () {
     'use strict';
 
     angular
@@ -21,8 +21,8 @@
 
         $scope.group = new Group();
 
-        $scope.addGroup = () => {
-            $scope.group.$save(() => {
+        $scope.addGroup = function() {
+            $scope.group.$save(function() {
                 $location.path('/')
             })
         }
@@ -32,8 +32,8 @@
 
         $scope.group = Group.get({ id: $routeParams.id });
 
-        $scope.editGroup = () => {
-            $scope.group.$save(() => {
+        $scope.editGroup = function() {
+            $scope.group.$save(function() {
                 $location.path('/')
             })
         }
@@ -43,8 +43,8 @@
 
         $scope.group = Group.get({ id: $routeParams.id });
 
-        $scope.deleteGroup = () => {
-            $scope.group.$remove({ id: $scope.group.id }, () => {
+        $scope.deleteGroup = function () {
+            $scope.group.$remove({ id: $scope.group.id }, function () {
                 $location.path('/')
             })
         }

@@ -1,4 +1,4 @@
-﻿(() => {
+﻿(function () {
     'use strict';
 
     angular.module('scheduleKpi', [
@@ -12,10 +12,14 @@
 
     ]);
 
-    angular.module('scheduleKpi').config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
+    angular.module('scheduleKpi').config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
         $routeProvider
             .when('/', {
+                templateUrl: 'partials/main.html',
+                controller: 'groupsController'
+            })
+            .when('/groups', {
                 templateUrl: 'partials/groups.html',
                 controller: 'groupsController'
             }).when('/groups/add', {

@@ -11,7 +11,6 @@ namespace courseWorkDataBases.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int Course { get; set; }
-        public DbSet<Speciality> Speciality { get; set; }
         public int Quantity { get; set; }
     }
 }

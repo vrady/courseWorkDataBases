@@ -23,6 +23,9 @@ namespace courseWorkDataBases.Controllers
         [HttpGet]
         public IEnumerable<Group> Get()
         {
+            //var group = new Group { Id = 4, Course = 3, Name = "name", Quantity = 4 };
+            //_dbContext.Groups.Add(group);
+            //_dbContext.SaveChanges();
             return _dbContext.Groups;
         }
 
@@ -56,6 +59,9 @@ namespace courseWorkDataBases.Controllers
             {
                 var existingGroup = _dbContext.Groups.FirstOrDefault(q => q.Id == group.Id);
                 existingGroup.Name = group.Name;
+                //existingGroup.Speciality = group.Speciality;
+                existingGroup.Course = group.Course;
+                existingGroup.Quantity = group.Quantity;
                 _dbContext.SaveChanges();
                 return new ObjectResult(existingGroup);
             }
@@ -67,6 +73,9 @@ namespace courseWorkDataBases.Controllers
         {
             var existingGroup = _dbContext.Groups.FirstOrDefault(q => q.Id == id);
             existingGroup.Name = group.Name;
+            //existingGroup.Speciality = group.Speciality;
+            existingGroup.Course = group.Course;
+            existingGroup.Quantity = group.Quantity;
             _dbContext.SaveChanges();
             return new ObjectResult(existingGroup);
         }

@@ -1,9 +1,9 @@
 ﻿(function () {
     'use strict';
 
-    let groupsService = angular.module('groupsService', ['ngResource']);
+    var groupsService = angular.module('groupsService', ['ngResource']);
 
-    groupsService.factory('Groups', ['$resource', $resource => {
+    groupsService.factory('Groups', ['$resource', function($resource) {
         return $resource('/api/groups/', {}, {
             query: { method: 'GET', params: {}, isArray: true }
         });

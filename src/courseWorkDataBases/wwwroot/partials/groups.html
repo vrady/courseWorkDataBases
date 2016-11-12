@@ -2,7 +2,13 @@
     <h2>List of Groups</h2>
     <ul class="collection">
         <li ng-repeat="group in groups" class="collection-item">
-            <p>ID: {{group.id}} <br /> Name: {{group.name}}</p>
+            <p>
+                ID: {{group.id}}<br />
+                Name: {{group.name}} <br />
+                Course: {{group.course}}<br />
+                Speciality: {{group.speciality}}<br />
+                Quantity: {{group.quantity}}
+            </p>
         </li>
     </ul>
     <a class="btn waves-effect waves-light" href="/groups/add">Add new group</a>

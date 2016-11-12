@@ -72,9 +72,7 @@ namespace courseWorkDataBases
 
             app.UseStaticFiles();
 
-            app.UseMvc(routes => routes.MapRoute(
-                name: "default",
-                template: "{controller=Groups}/{action=Get}/{id?}"));
+            app.UseMvc();
         }
     }
 }
