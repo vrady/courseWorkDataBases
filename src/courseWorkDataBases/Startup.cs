@@ -59,9 +59,13 @@ namespace courseWorkDataBases
 
             app.UseApplicationInsightsExceptionTelemetry();
 
+            app.UseDefaultFiles();
+
             app.UseStaticFiles();
 
-            app.UseMvc();
+            app.UseMvc(routes => routes.MapRoute(
+                name: "default",
+                template: "{controller=Groups}/{action=Get}/{id?}"));
         }
     }
 }
