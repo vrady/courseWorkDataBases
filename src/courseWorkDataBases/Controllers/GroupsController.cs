@@ -44,20 +44,41 @@ namespace courseWorkDataBases.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Post([FromBody]Group group)
         {
+            if (group.Id == 0)
+            {
+                _dbContext.Groups.Add(group);
+                _dbContext.SaveChanges();
+                return new ObjectResult(group);
+            }
+            else
+            {
+                var existingGroup = _dbContext.Groups.FirstOrDefault(q => q.Id == id);
+                existingGroup.Name = group.Name;
+                _dbContext.SaveChanges();
+                return new ObjectResult(existingGroup);
+            }
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult Put(int id, [FromBody]Group group)
         {
+            var existingGroup = _dbContext.Groups.FirstOrDefault(q => q.Id == id);
+            existingGroup.Name = group.Name;
+            _dbContext.SaveChanges();
+            return new ObjectResult(existingGroup);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var group = _dbContext.Groups.FirstOrDefault(m => m.Id == id);
+            _dbContext.Groups.Remove(group);
+            _dbContext.SaveChanges();
+            return new StatusCodeResult(200);
         }
     }
 }
