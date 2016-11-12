@@ -23,18 +23,23 @@ namespace courseWorkDataBases.Controllers
         [HttpGet]
         public IEnumerable<Group> Get()
         {
-            return new List<Group>
-            {
-                new Group { Id = 1 , Name = "ТР-41"},
-                new Group { Id = 2 , Name = "ТР-42"}
-            };
+            return _dbContext.Groups;
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var group = _dbContext.Groups.FirstOrDefault(x => x.Id == id);
+
+            if(group !=null)
+            {
+                return new ObjectResult(group);
+            }
+            else
+            {
+                return new NotFoundResult();
+            }
         }
 
         // POST api/values
