@@ -1,4 +1,4 @@
-﻿(function () {
+﻿(() => {
     'use strict';
 
     angular.module('scheduleKpi', [
@@ -9,10 +9,10 @@
         'groupsService'
 
         // 3rd Party Modules
-        
+
     ]);
 
-    angular.module('scheduleKpi').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+    angular.module('scheduleKpi').config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
 
         $routeProvider
             .when('/', {
