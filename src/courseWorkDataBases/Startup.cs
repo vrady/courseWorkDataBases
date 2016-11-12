@@ -45,7 +45,7 @@ namespace courseWorkDataBases
             services.AddMvc();
 
             services.AddDbContext<GroupsAppContext>(options =>
-  options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+  options.UseSqlServer(Configuration["Data:ConnectionString"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,6 +12,13 @@ namespace courseWorkDataBases.Controllers
     [Route("api/[controller]")]
     public class GroupsController : Controller
     {
+        private readonly GroupsAppContext _dbContext;
+
+        public GroupsController(GroupsAppContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         // GET: api/values
         [HttpGet]
         public IEnumerable<Group> Get()
