@@ -6,17 +6,12 @@ using System.Threading.Tasks;
 
 namespace courseWorkDataBases.Models
 {
-    public class Speciality
+    public class Subject
     {
-        public Speciality()
-        {
-            Groups = new HashSet<Group>();
-        }
         [Key]
         public int? Id { get; set; }
         [Required]
         [MaxLength(50)]
-        public string Name { get; set; }
-        public virtual ICollection<Group> Groups { get; set; }
+        public int Name { get; set; }
     }
 }

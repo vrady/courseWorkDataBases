@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -9,9 +11,18 @@ namespace courseWorkDataBases.Models
     public class Group
     {
         public int? Id { get; set; }
+        [Required]
+        [MaxLength(50)]
         public string Name { get; set; }
+        [Range(1, 6)]
+        [Required]
         public int Course { get; set; }
+        [Required]
+        [CustomValidation(typeof(CustomValidator), "GroupQuantityOverZero")]
         public int Quantity { get; set; }
+        public int SpecialityId { get; set; }
+        [ForeignKey("Id")]
+        public virtual Speciality Speciality { get; set; }
 
         public static List<Group> All { get; set; } = new List<Group>
         {
