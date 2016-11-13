@@ -3,6 +3,7 @@
 
     angular.module('scheduleKpi', [
         // Angular modules 
+        'ngAnimate',
         'ngRoute',
 
         // Custom modules
