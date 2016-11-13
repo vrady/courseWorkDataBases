@@ -1,31 +1,29 @@
-﻿<div class="container white">
+﻿<div class="container">
     <div class="card">
-        <h4 class="center-align">Додати нову групу</h4>
+        <h4 class="center-align">Додати нову групу {{group.name}}</h4>
         <div class="card-content">
-            <form ng-submit="addGroup()">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="groupId" type="number" name="id" ng-model="group.id" class="validate" /><br />
-                        <label for="groupId">Ідентифікатор групи</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="groupName" type="text" name="name" ng-model="group.name" class="validate"/><br />
-                        <label for="groupName">Назва групи</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="groupCourse" type="text" name="id" ng-model="group.course" class="validate"/><br />
-                        <label for="groupCourse">Курс</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="groupSpeciality" type="text" name="id" ng-model="group.speciality" class="validate"/><br />
-                        <label for="groupSpeciality">Спеціальність</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="groupQuantity" type="text" name="id" ng-model="group.quantity" class="validate"/><br />
-                        <label for="groupQuantity">Кількість студентів в групі</label>
-                    </div>
+            <form name="addGroupForm" ng-submit="addGroup()">
+                <!--<div class="input-field col s12">
+                    <input id="groupId" type="number" name="id" ng-model="group.id" required /><br />
+                    <label for="groupId">Ідентифікатор групи</label>
+                </div>-->
+                <div class="input-field col s12">
+                    <input id="groupName" type="text" name="name" ng-model="group.name" required /><br />
+                    <label for="groupName">Назва групи</label>
                 </div>
-                <button type="submit" class="btn waves-effect waves-light">Зберегти</button>
+                <div class="input-field col s12">
+                    <input id="groupCourse" type="number" name="course" ng-model="group.course" required /><br />
+                    <label for="groupCourse">Курс</label>
+                </div>
+                <!--<div class="input-field col s12">
+                    <input id="groupSpeciality" type="text" name="id" ng-model="group.speciality" required /><br />
+                    <label for="groupSpeciality">Спеціальність</label>
+                </div>-->
+                <div class="input-field col s12">
+                    <input id="groupQuantity" type="number" name="quantity" ng-model="group.quantity" required /><br />
+                    <label for="groupQuantity">Кількість студентів в групі</label>
+                </div>
+                <button type="submit" ng-disabled="addGroupForm.$invalid" class="btn waves-effect waves-light">Зберегти</button>
                 <a class="btn waves-effect waves-light" href="/">Відмінити</a>
                 <a class="btn waves-effect waves-light" href="/groups">Groups</a>
             </form>

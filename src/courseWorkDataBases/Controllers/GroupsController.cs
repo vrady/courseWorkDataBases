@@ -26,14 +26,14 @@ namespace courseWorkDataBases.Controllers
             //var group = new Group { Id = 4, Course = 3, Name = "name", Quantity = 4 };
             //_dbContext.Groups.Add(group);
             //_dbContext.SaveChanges();
-            return _dbContext.Groups;
+            return Group.All;
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var group = _dbContext.Groups.FirstOrDefault(x => x.Id == id);
+            var group = Group.All.FirstOrDefault(x => x.Id == id);
 
             if(group !=null)
             {
@@ -49,20 +49,20 @@ namespace courseWorkDataBases.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]Group group)
         {
-            if (group.Id == 0)
+            if (group.Id == null)
             {
-                _dbContext.Groups.Add(group);
-                _dbContext.SaveChanges();
+                Group.All.Add(group);
+                //_dbContext.SaveChanges();
                 return new ObjectResult(group);
             }
             else
             {
-                var existingGroup = _dbContext.Groups.FirstOrDefault(q => q.Id == group.Id);
+                var existingGroup = Group.All.FirstOrDefault(q => q.Id == group.Id);
                 existingGroup.Name = group.Name;
                 //existingGroup.Speciality = group.Speciality;
                 existingGroup.Course = group.Course;
                 existingGroup.Quantity = group.Quantity;
-                _dbContext.SaveChanges();
+                //_dbContext.SaveChanges();
                 return new ObjectResult(existingGroup);
             }
         }
@@ -71,12 +71,12 @@ namespace courseWorkDataBases.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody]Group group)
         {
-            var existingGroup = _dbContext.Groups.FirstOrDefault(q => q.Id == id);
+            var existingGroup = Group.All.FirstOrDefault(q => q.Id == id);
             existingGroup.Name = group.Name;
             //existingGroup.Speciality = group.Speciality;
             existingGroup.Course = group.Course;
             existingGroup.Quantity = group.Quantity;
-            _dbContext.SaveChanges();
+            //_dbContext.SaveChanges();
             return new ObjectResult(existingGroup);
         }
 
@@ -84,9 +84,9 @@ namespace courseWorkDataBases.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var group = _dbContext.Groups.FirstOrDefault(m => m.Id == id);
-            _dbContext.Groups.Remove(group);
-            _dbContext.SaveChanges();
+            var group = Group.All.FirstOrDefault(m => m.Id == id);
+            Group.All.Remove(group);
+            //_dbContext.SaveChanges();
             return new StatusCodeResult(200);
         }
     }

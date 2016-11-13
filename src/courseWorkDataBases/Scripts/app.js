@@ -31,6 +31,8 @@
             }).when('/groups/delete/:id', {
                 templateUrl: 'partials/delete.html',
                 controller: 'groupsDeleteController'
+            }).otherwise({
+                redirectTo: '/'
             });
 
         $locationProvider.html5Mode(true);

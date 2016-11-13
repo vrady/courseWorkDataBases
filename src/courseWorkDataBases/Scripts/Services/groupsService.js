@@ -1,11 +1,18 @@
 ﻿(function () {
     'use strict';
 
-    var groupsService = angular.module('groupsService', ['ngResource']);
+    angular.module('groupsService', ['ngResource']).factory('Group', Group);
 
-    groupsService.factory('Groups', ['$resource', function($resource) {
-        return $resource('/api/groups/', {}, {
-            query: { method: 'GET', params: {}, isArray: true }
-        });
-    }])
+    Group.$inject = ['$resource'];
+
+    function Group($resource) {
+        return $resource('/api/groups/:id')
+    }
+
+    //groupsService.factory('Groups', ['$resource', function ($resource) {
+    //    return $resource('/api/groups/', {}, {
+    //        //query: { method: 'GET', params: {}, isArray: true },
+    //        get: { method: 'GET', isArray: false}
+    //    });
+    //}])
 })();

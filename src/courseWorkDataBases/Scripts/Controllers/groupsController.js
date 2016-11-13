@@ -8,16 +8,16 @@
         .controller('groupsEditController', groupsEditController)
         .controller('groupsDeleteController', groupsDeleteController);
 
-    groupsController.$inject = ['$scope', 'Groups'];
-    groupsAddController.$inject = ['$scope', 'Groups', '$location'];
-    groupsEditController.$inject = ['$scope', 'Groups', '$location', '$routeParams'];
-    groupsDeleteController.$inject = ['$scope', 'Groups', '$location', '$routeParams'];
+    groupsController.$inject = ['$scope', 'Group'];
+    groupsAddController.$inject = ['$scope', 'Group', '$location'];
+    groupsEditController.$inject = ['$scope', 'Group', '$location', '$routeParams'];
+    groupsDeleteController.$inject = ['$scope', 'Group', '$location', '$routeParams'];
 
-    function groupsController($scope, Groups) {
-        $scope.groups = Groups.query();
+    function groupsController($scope, Group) {
+        $scope.groups = Group.query();
     }
 
-    function groupsAddController($scope, Groups, $location) {
+    function groupsAddController($scope, Group, $location) {
 
         $scope.group = new Group();
 
@@ -28,7 +28,7 @@
         }
     }
 
-    function groupsEditController($scope, Groups, $location, $routeParams) {
+    function groupsEditController($scope, Group, $location, $routeParams) {
 
         $scope.group = Group.get({ id: $routeParams.id });
 
@@ -39,7 +39,7 @@
         }
     }
 
-    function groupsDeleteController($scope, Groups, $location, $routeParams) {
+    function groupsDeleteController($scope, Group, $location, $routeParams) {
 
         $scope.group = Group.get({ id: $routeParams.id });
 

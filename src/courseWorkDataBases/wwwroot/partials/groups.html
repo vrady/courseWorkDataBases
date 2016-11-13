@@ -1,15 +1,18 @@
 ﻿<div class="container">
-    <h2>List of Groups</h2>
+    <h2>Список груп</h2>
+    <a class="btn waves-effect waves-light" href="/groups/add">Додати нову групу</a>
     <ul class="collection">
         <li ng-repeat="group in groups" class="collection-item">
+            <h5>{{group.name}}</h5>
             <p>
-                ID: {{group.id}}<br />
-                Name: {{group.name}} <br />
-                Course: {{group.course}}<br />
-                Speciality: {{group.speciality}}<br />
-                Quantity: {{group.quantity}}
+                Номер групи: {{group.id}}<br />
+                Курс: {{group.course}}<br />
+                <!--Speciality: {{group.speciality}}<br />-->
+                Кількість студентів в групі: {{group.quantity}}
             </p>
+            <a class="btn waves-effect waves-light" href="/groups/delete/{{group.id}}">Видалити групу</a>
+            <a class="btn waves-effect waves-light" href="/groups/edit/{{group.id}}">Редагувати групу</a>
         </li>
     </ul>
-    <a class="btn waves-effect waves-light" href="/groups/add">Add new group</a>
+    
 </div>
