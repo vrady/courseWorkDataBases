@@ -3,10 +3,10 @@
         <h4 class="center-align light">Додати нову групу {{group.name}}</h4>
         <div class="card-content">
             <form name="addGroupForm" ng-submit="addGroup()">
-                <!--<div class="input-field col s12">
+                <div class="input-field col s12">
                     <input id="groupId" type="number" name="id" ng-model="group.id" required /><br />
                     <label for="groupId">Ідентифікатор групи</label>
-                </div>-->
+                </div>
                 <div class="input-field col s12">
                     <input id="groupName" type="text" name="name" ng-model="group.name" required /><br />
                     <label for="groupName">Назва групи</label>
@@ -15,10 +15,10 @@
                     <input id="groupCourse" type="number" name="course" ng-model="group.course" required /><br />
                     <label for="groupCourse">Курс</label>
                 </div>
-                <!--<div class="input-field col s12">
-                    <input id="groupSpeciality" type="text" name="id" ng-model="group.speciality" required /><br />
+                <div class="input-field col s12">
+                    <input id="groupSpeciality" type="text" name="specialityId" ng-model="group.speciality" required /><br />
                     <label for="groupSpeciality">Спеціальність</label>
-                </div>-->
+                </div>
                 <div class="input-field col s12">
                     <input id="groupQuantity" type="number" name="quantity" ng-model="group.quantity" required /><br />
                     <label for="groupQuantity">Кількість студентів в групі</label>
