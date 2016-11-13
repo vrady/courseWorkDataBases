@@ -8,8 +8,8 @@ using courseWorkDataBases.Models;
 namespace courseWorkDataBases.Migrations
 {
     [DbContext(typeof(GroupsAppContext))]
-    [Migration("20161113143958_tables-added")]
-    partial class tablesadded
+    [Migration("20161113200134_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,14 +19,15 @@ namespace courseWorkDataBases.Migrations
 
             modelBuilder.Entity("courseWorkDataBases.Models.Audience", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Number");
 
                     b.Property<int>("Quantity");
 
-                    b.Property<string>("Type");
+                    b.Property<string>("Type")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -35,7 +36,8 @@ namespace courseWorkDataBases.Migrations
 
             modelBuilder.Entity("courseWorkDataBases.Models.Group", b =>
                 {
-                    b.Property<int?>("Id");
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("Course");
 
@@ -49,14 +51,14 @@ namespace courseWorkDataBases.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id");
+                    b.HasIndex("SpecialityId");
 
                     b.ToTable("Groups");
                 });
 
             modelBuilder.Entity("courseWorkDataBases.Models.Plan", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Lectures");
@@ -84,7 +86,7 @@ namespace courseWorkDataBases.Migrations
 
             modelBuilder.Entity("courseWorkDataBases.Models.Shedule", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AudienceId");
@@ -99,7 +101,9 @@ namespace courseWorkDataBases.Migrations
 
                     b.Property<int>("TeacherId");
 
-                    b.Property<string>("Type");
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(10);
 
                     b.HasKey("Id");
 
@@ -116,7 +120,7 @@ namespace courseWorkDataBases.Migrations
 
             modelBuilder.Entity("courseWorkDataBases.Models.Speciality", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
@@ -130,7 +134,7 @@ namespace courseWorkDataBases.Migrations
 
             modelBuilder.Entity("courseWorkDataBases.Models.Subject", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Name")
@@ -143,7 +147,7 @@ namespace courseWorkDataBases.Migrations
 
             modelBuilder.Entity("courseWorkDataBases.Models.Teacher", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("FullName")
@@ -159,7 +163,7 @@ namespace courseWorkDataBases.Migrations
                 {
                     b.HasOne("courseWorkDataBases.Models.Speciality", "Speciality")
                         .WithMany("Groups")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("SpecialityId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
