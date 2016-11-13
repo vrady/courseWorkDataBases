@@ -32,7 +32,24 @@
             }).when('/groups/delete/:id', {
                 templateUrl: 'partials/delete.html',
                 controller: 'groupsDeleteController'
-            }).otherwise({
+            })
+            .when('/specialities', {
+                templateUrl: 'partials/specialities.html',
+                controller: 'specialityController'
+            })
+            .when('/specialities/add', {
+                templateUrl: 'partials/specialitiesAdd.html',
+                controller: 'specialityAddController'
+            })
+            .when('/specialities/edit/:id', {
+                templateUrl: 'partials/specialitiesEdit.html',
+                controller: 'specialityEditController'
+            })
+            .when('/specialities/delete/:id', {
+                templateUrl: 'partials/specialitiesDelete.html',
+                controller: 'specialityDeleteController'
+            })
+            .otherwise({
                 redirectTo: '/'
             });
 
