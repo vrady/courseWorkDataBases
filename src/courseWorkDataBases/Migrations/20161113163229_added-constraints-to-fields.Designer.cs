@@ -8,9 +8,10 @@ using courseWorkDataBases.Models;
 namespace courseWorkDataBases.Migrations
 {
     [DbContext(typeof(GroupsAppContext))]
-    partial class GroupsAppContextModelSnapshot : ModelSnapshot
+    [Migration("20161113163229_added-constraints-to-fields")]
+    partial class addedconstraintstofields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")

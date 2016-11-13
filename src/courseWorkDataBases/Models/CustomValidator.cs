@@ -7,9 +7,14 @@ namespace courseWorkDataBases.Models
 {
     public class CustomValidator
     {
-        public bool GroupQuantityOverZero(int quantity)
+        public static bool MoreThanZero(int value)
         {
-            return quantity > 0;
+            return value > 0;
+        }
+
+        public static bool NotLessThanZero(int value)
+        {
+            return value >= 0;
         }
     }
 }

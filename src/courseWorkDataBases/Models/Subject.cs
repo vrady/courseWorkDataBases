@@ -10,6 +10,7 @@ namespace courseWorkDataBases.Models
     {
         [Key]
         public int? Id { get; set; }
+
         [Required]
         [MaxLength(50)]
         public int Name { get; set; }
