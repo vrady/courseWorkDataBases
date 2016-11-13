@@ -1,0 +1,27 @@
+﻿<div class="container">
+    <h2 class="light">Список викладачів</h2>
+    <a class="btn waves-effect waves-light" href="/teachers/add">Додати нового викладача</a>
+    <table class="striped responsive-table">
+        <thead>
+            <tr>                
+                <th data-field="name">
+                    <button class="btn-large transparent black-text" ng-click="sortBy('name')"><h6>ПІБ викладача</h6></button>
+                    <span ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+                </th>
+                <th>
+                    <button class="btn-large transparent black-text"><h6>Видалення</h6></button>
+                </th>
+                <th>
+                    <button class="btn-large transparent black-text"><h6>Редагування</h6></button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="group-item" ng-repeat="teacher in teachers">
+                <td>{{teacher.name}}</td>
+                <td><a class="btn waves-effect waves-light red lighten-2" href="/teachers/delete/{{teacher.id}}">Видалити спеціальність</a></td>
+                <td><a class="btn waves-effect waves-light" href="/teachers/edit/{{teacher.id}}">Редагувати спеціальність</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

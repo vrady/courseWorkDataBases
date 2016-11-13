@@ -1,0 +1,22 @@
+﻿<div class="container">
+    <div class="card">
+        <h4 class="center-align light">Редагувати спеціальність {{speciality.name}}</h4>
+        <div class="card-content">
+            <form name="editSpecialityForm" ng-submit="editSpeciality()">
+                <div class="input-field col s12">
+                    <input id="groupName" type="text" name="name" ng-model="speciality.name" value="{{speciality.name}}" required /><br />
+                    <label for="groupName" class="active">Назва cпеціальності</label>
+                </div>
+                
+                <button type="submit" ng-disabled="editSpecialityForm.$invalid" class="btn waves-effect waves-light">Зберегти</button>
+                <a class="btn waves-effect waves-light" href="/">Відмінити</a>
+                <a class="btn waves-effect waves-light" href="/specialities">Спеціальності</a>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    setTimeout(function () {
+        Materialize.updateTextFields();
+    },500)
+</script>

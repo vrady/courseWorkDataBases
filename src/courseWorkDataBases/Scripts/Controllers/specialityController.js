@@ -9,7 +9,7 @@
         .controller('specialityDeleteController', specialityDeleteController);
 
     specialityController.$inject = ['$scope', 'Speciality', 'orderByFilter'];
-    function specialityController($scope, Speciality) {
+    function specialityController($scope, Speciality, orderBy) {
 
         $scope.specialities = Speciality.query();
 

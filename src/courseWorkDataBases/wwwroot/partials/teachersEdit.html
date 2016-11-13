@@ -1,0 +1,22 @@
+﻿<div class="container">
+    <div class="card">
+        <h4 class="center-align light">Редагувати викладача {{teacher.name}}</h4>
+        <div class="card-content">
+            <form name="editTeacherForm" ng-submit="editTeacher()">
+                <div class="input-field col s12">
+                    <input id="groupName" type="text" name="name" ng-model="teacher.name" value="{{teacher.name}}" required /><br />
+                    <label for="groupName" class="active">ПІБ викладача</label>
+                </div>
+
+                <button type="submit" ng-disabled="editTeacherForm.$invalid" class="btn waves-effect waves-light">Зберегти</button>
+                <a class="btn waves-effect waves-light" href="/">Відмінити</a>
+                <a class="btn waves-effect waves-light" href="/teachers">Спеціальності</a>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    setTimeout(function () {
+        Materialize.updateTextFields();
+    },500)
+</script>
