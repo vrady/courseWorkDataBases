@@ -38,6 +38,10 @@
 
         $locationProvider.html5Mode(true);
 
-    }]);
+    }]).directive('navbarkpi', function () {
+        return {
+            templateUrl: 'partials/navbar.html'
+        }
+    });
 
 })();
