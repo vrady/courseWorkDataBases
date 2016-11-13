@@ -70,6 +70,10 @@
                 templateUrl: 'partials/teachersDelete.html',
                 controller: 'teachersDeleteController'
             })
+            .when('/login', {
+                templateUrl: 'partials/login.html',
+                controller: 'adminsController'
+            })
             .otherwise({
                 redirectTo: '/'
             });
