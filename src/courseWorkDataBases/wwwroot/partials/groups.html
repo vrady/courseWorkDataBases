@@ -25,6 +25,10 @@
                     <button class="btn-large transparent black-text" ng-click="sortBy('name')"><h6>Назва групи</h6></button>
                     <span ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
                 </th>
+                <th data-field="name">
+                    <button class="btn-large transparent black-text" ng-click="sortBy('specialityId')"><h6>Номер спеціальності</h6></button>
+                    <span ng-show="propertyName === 'specialityId'" ng-class="{reverse: reverse}"></span>
+                </th>
                 <th data-field="course">
                     <button class="btn-large transparent black-text" ng-click="sortBy('course')"><h6>Курс</h6></button>
                     <span ng-show="propertyName === 'course'" ng-class="{reverse: reverse}"></span>
@@ -45,6 +49,7 @@
             <tr class="group-item" ng-repeat="group in groups">
                 <td>{{group.id}}</td>
                 <td>{{group.name}}</td>
+                <td>{{group.specialityId}}</td>
                 <td>{{group.course}}</td>
                 <td>{{group.quantity}}</td>
                 <td><a class="btn waves-effect waves-light red lighten-2" href="/groups/delete/{{group.id}}">Видалити групу</a></td>

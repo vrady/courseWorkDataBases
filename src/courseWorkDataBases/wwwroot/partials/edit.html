@@ -3,11 +3,6 @@
         <h4 class="center-align light">Редагувати групу {{group.name}}</h4>
         <div class="card-content">
             <form name="editGroupForm" ng-submit="editGroup()">
-
-                <!--<div class="input-field col s12">
-                    <input id="groupId" type="number" name="id" ng-model="group.id" value="{{group.id}}" required /><br />
-                    <label for="groupId" class="active">Ідентифікатор групи</label>
-                </div>-->
                 <div class="input-field col s12">
                     <input id="groupName" type="text" name="name" ng-model="group.name" value="{{group.name}}" required /><br />
                     <label for="groupName" class="active">Назва групи</label>
@@ -16,18 +11,17 @@
                     <input id="groupCourse" type="number" name="id" ng-model="group.course" value="{{group.course}}" required /><br />
                     <label for="groupCourse" class="active">Курс</label>
                 </div>
-                <!--<div class="input-field col s12">
-                    <input id="groupSpeciality" type="text" name="id" ng-model="group.speciality" value="{{group.speciality}}" required /><br />
+                <div class="input-field col s12">
+                    <input id="groupSpeciality" type="text" name="id" ng-model="group.specialityId" value="{{group.specialityId}}" required /><br />
                     <label for="groupSpeciality">Спеціальність</label>
-                </div>-->
+                </div>
                 <div class="input-field col s12">
                     <input id="groupQuantity" type="number" name="id" ng-model="group.quantity" value="{{group.quantity}}" required /><br />
                     <label for="groupQuantity" class="active">Кількість студентів в групі</label>
                 </div>
 
                 <button type="submit" ng-disabled="editGroupForm.$invalid" class="btn waves-effect waves-light">Зберегти</button>
-                <a class="btn waves-effect waves-light" href="/">Відмінити</a>
-                <a class="btn waves-effect waves-light" href="/groups">Groups</a>
+                <a class="btn waves-effect waves-light" href="/groups">Відмінити</a>
             </form>
         </div>
     </div>
@@ -35,5 +29,5 @@
 <script>
     setTimeout(function () {
         Materialize.updateTextFields();
-    },500)
+    },1000)
 </script>

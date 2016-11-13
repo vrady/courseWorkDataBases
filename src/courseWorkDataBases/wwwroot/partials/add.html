@@ -4,10 +4,6 @@
         <div class="card-content">
             <form name="addGroupForm" ng-submit="addGroup()">
                 <div class="input-field col s12">
-                    <input id="groupId" type="number" name="id" ng-model="group.id" required /><br />
-                    <label for="groupId">Ідентифікатор групи</label>
-                </div>
-                <div class="input-field col s12">
                     <input id="groupName" type="text" name="name" ng-model="group.name" required /><br />
                     <label for="groupName">Назва групи</label>
                 </div>
@@ -24,8 +20,7 @@
                     <label for="groupQuantity">Кількість студентів в групі</label>
                 </div>
                 <button type="submit" ng-disabled="addGroupForm.$invalid" class="btn waves-effect waves-light">Зберегти</button>
-                <a class="btn waves-effect waves-light" href="/">Відмінити</a>
-                <a class="btn waves-effect waves-light" href="/groups">Групи</a>
+                <a class="btn waves-effect waves-light" href="/groups">Відмінити</a>
             </form>
         </div>
     </div>
