@@ -9,6 +9,7 @@ namespace courseWorkDataBases.Models
 {
     public class GroupsAppContext : DbContext
     {
+        public GroupsAppContext(DbContextOptions options) : base(options) { }
         public DbSet<Group> Groups { get; set; }
     }
 }
