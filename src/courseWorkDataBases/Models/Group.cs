@@ -16,7 +16,10 @@ namespace courseWorkDataBases.Models
         public static List<Group> All { get; set; } = new List<Group>
         {
             new Group { Id = 1, Name = "ТР-41", Course = 3, Quantity = 19 },
-            new Group { Id = 2, Name = "ТР-42", Course = 3, Quantity = 18 }
+            new Group { Id = 2, Name = "ТР-42", Course = 3, Quantity = 18 },
+            new Group { Id = 3, Name = "ТІ-52", Course = 2, Quantity = 22 },
+            new Group { Id = 4, Name = "ТВ-62", Course = 1, Quantity = 25 },
+            new Group { Id = 5, Name = "ТР-32", Course = 4, Quantity = 15 }
         };
     }
 }

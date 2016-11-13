@@ -8,13 +8,24 @@
         .controller('groupsEditController', groupsEditController)
         .controller('groupsDeleteController', groupsDeleteController);
 
-    groupsController.$inject = ['$scope', 'Group'];
+    groupsController.$inject = ['$scope', 'Group', 'orderByFilter'];
     groupsAddController.$inject = ['$scope', 'Group', '$location'];
     groupsEditController.$inject = ['$scope', 'Group', '$location', '$routeParams'];
     groupsDeleteController.$inject = ['$scope', 'Group', '$location', '$routeParams'];
 
-    function groupsController($scope, Group) {
+    function groupsController($scope, Group, orderBy) {
         $scope.groups = Group.query();
+
+        $scope.propertyName = 'id';
+        $scope.reverse = true;
+        //$scope.groups = orderBy($scope.groups, $scope.propertyName, $scope.reverse);
+
+        $scope.sortBy = function (propertyName) {
+            $scope.reverse = (propertyName !== null && $scope.propertyName === propertyName)
+                ? !$scope.reverse : false;
+            $scope.propertyName = propertyName;
+            $scope.groups = orderBy($scope.groups, $scope.propertyName, $scope.reverse);
+        };
     }
 
     function groupsAddController($scope, Group, $location) {

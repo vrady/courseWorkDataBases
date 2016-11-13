@@ -32,3 +32,27 @@
     .view-frame.ng-leave-active {
         opacity: 0;
     }
+
+.group-item.ng-enter,
+.group-item.ng-leave,
+.group-item.ng-move {
+    transition: 0.3s ease-in-out all;
+}
+
+.group-item.ng-enter,
+.group-item.ng-move {
+    opacity: 0;
+}
+
+    .group-item.ng-enter.ng-enter-active,
+    .group-item.ng-move.ng-move-active {
+        opacity: 1;
+    }
+
+.group-item.ng-leave {
+    opacity: 1;
+}
+
+    .group-item.ng-leave.ng-leave-active {
+        opacity: 0;
+    }
