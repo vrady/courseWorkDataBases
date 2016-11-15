@@ -26,49 +26,25 @@
                 templateUrl: 'partials/groups.html',
                 controller: 'groupsController'
             })
-            .when('/groups/add', {
-                templateUrl: 'partials/add.html',
-                controller: 'groupsAddController'
-            })
             .when('/groups/edit/:id', {
-                templateUrl: 'partials/edit.html',
+                templateUrl: 'partials/groupsEdit.html',
                 controller: 'groupsEditController'
-            })
-            .when('/groups/delete/:id', {
-                templateUrl: 'partials/delete.html',
-                controller: 'groupsDeleteController'
             })
             .when('/specialities', {
                 templateUrl: 'partials/specialities.html',
                 controller: 'specialityController'
             })
-            .when('/specialities/add', {
-                templateUrl: 'partials/specialitiesAdd.html',
-                controller: 'specialityAddController'
-            })
             .when('/specialities/edit/:id', {
                 templateUrl: 'partials/specialitiesEdit.html',
                 controller: 'specialityEditController'
-            })
-            .when('/specialities/delete/:id', {
-                templateUrl: 'partials/specialitiesDelete.html',
-                controller: 'specialityDeleteController'
             })
             .when('/teachers', {
                 templateUrl: 'partials/teachers.html',
                 controller: 'teachersController'
             })
-            .when('/teachers/add', {
-                templateUrl: 'partials/teachersAdd.html',
-                controller: 'teachersAddController'
-            })
             .when('/teachers/edit/:id', {
                 templateUrl: 'partials/teachersEdit.html',
                 controller: 'teachersEditController'
-            })
-            .when('/teachers/delete/:id', {
-                templateUrl: 'partials/teachersDelete.html',
-                controller: 'teachersDeleteController'
             })
             .when('/login', {
                 templateUrl: 'partials/login.html',
@@ -80,7 +56,7 @@
 
         $locationProvider.html5Mode(true);
 
-    }]).directive('navbarkpi', function () {
+    }]).directive('navbar', function () {
         return {
             templateUrl: 'partials/navbar.html'
         }

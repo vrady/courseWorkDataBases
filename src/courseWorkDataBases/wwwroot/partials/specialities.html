@@ -24,19 +24,19 @@
             <tr class="group-item" ng-repeat="speciality in specialities">
                 <td>{{speciality.id}}</td>
                 <td>{{speciality.name}}</td>
-                <td><a class="btn waves-effect waves-light red lighten-2" href="/specialities/delete/{{speciality.id}}">Видалити спеціальність</a></td>
+                <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteSpeciality(speciality)">Видалити спеціальність</a></td>
                 <td><a class="btn waves-effect waves-light" href="/specialities/edit/{{speciality.id}}">Редагувати спеціальність</a></td>
             </tr>
         </tbody>
     </table>
 </div>
 <!-- Modal Structure -->
-<div id="modal1" class="modal bottom-sheet" ng-controller="specialityAddController">
+<div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
-        <h4>Додати нову спеціальність {{speciality.name}}</h4>
+        <h4>Додати нову спеціальність {{newSpeciality.name}}</h4>
         <form name="addSpecialityForm" ng-submit="addSpeciality()">
             <div class="input-field col s12">
-                <input id="groupName" type="text" name="name" ng-model="speciality.name" required /><br />
+                <input id="groupName" type="text" name="name" ng-model="newSpeciality.name" required /><br />
                 <label for="groupName">Назва спеціальності</label>
             </div>
             <button type="submit" ng-disabled="addSpecialityForm.$invalid" class="btn modal-close waves-effect waves-light">Зберегти</button>

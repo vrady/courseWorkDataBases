@@ -4,16 +4,12 @@
     angular
         .module('scheduleKpi')
         .controller('groupsController', groupsController)
-        .controller('groupsAddController', groupsAddController)
-        .controller('groupsEditController', groupsEditController)
-        .controller('groupsDeleteController', groupsDeleteController);
+        .controller('groupsEditController', groupsEditController);
 
-    groupsController.$inject = ['$scope', 'Group', 'orderByFilter'];
-    groupsAddController.$inject = ['$scope', 'Group', '$location'];
+    groupsController.$inject = ['$scope', 'Group', 'orderByFilter', '$route'];
     groupsEditController.$inject = ['$scope', 'Group', '$location', '$routeParams'];
-    groupsDeleteController.$inject = ['$scope', 'Group', '$location', '$routeParams'];
 
-    function groupsController($scope, Group, orderBy) {
+    function groupsController($scope, Group, orderBy, $route) {
         $scope.groups = Group.query();
 
         $scope.propertyName = 'id';
@@ -26,15 +22,18 @@
             $scope.propertyName = propertyName;
             $scope.groups = orderBy($scope.groups, $scope.propertyName, $scope.reverse);
         };
-    }
 
-    function groupsAddController($scope, Group, $location) {
+        $scope.newGroup = new Group();
+        $scope.addGroup = function () {
+            $scope.newGroup.$save(function () {
+                $route.reload();
+            })
+        }
 
-        $scope.group = new Group();
-
-        $scope.addGroup = function() {
-            $scope.group.$save(function() {
-                $location.path('/')
+        $scope.deleteGroup = function (deletedGroup) {
+            $scope.deletedGroup = deletedGroup;
+            $scope.deletedGroup.$remove({ id: $scope.deletedGroup.id }, function () {
+                $route.reload();
             })
         }
     }
@@ -45,17 +44,6 @@
 
         $scope.editGroup = function() {
             $scope.group.$save(function() {
-                $location.path('/')
-            })
-        }
-    }
-
-    function groupsDeleteController($scope, Group, $location, $routeParams) {
-
-        $scope.group = Group.get({ id: $routeParams.id });
-
-        $scope.deleteGroup = function () {
-            $scope.group.$remove({ id: $scope.group.id }, function () {
                 $location.path('/')
             })
         }

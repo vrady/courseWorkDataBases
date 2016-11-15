@@ -19,19 +19,19 @@
         <tbody>
             <tr class="group-item" ng-repeat="teacher in teachers">
                 <td>{{teacher.name}}</td>
-                <td><a class="btn waves-effect waves-light red lighten-2" href="/teachers/delete/{{teacher.id}}">Видалити спеціальність</a></td>
+                <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteTeacher(teacher)">Видалити спеціальність</a></td>
                 <td><a class="btn waves-effect waves-light" href="/teachers/edit/{{teacher.id}}">Редагувати спеціальність</a></td>
             </tr>
         </tbody>
     </table>
 </div>
 <!-- Modal Structure -->
-<div id="modal1" class="modal bottom-sheet" ng-controller="teachersAddController">
+<div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
-        <h4>Додати нового викладача {{teacher.name}}</h4>
+        <h4>Додати нового викладача {{newTeacher.name}}</h4>
         <form name="addTeacherForm" ng-submit="addTeacher()">
             <div class="input-field col s12">
-                <input id="groupName" type="text" name="name" ng-model="teacher.name" required /><br />
+                <input id="groupName" type="text" name="name" ng-model="newTeacher.name" required /><br />
                 <label for="groupName">ПІБ викладача</label>
             </div>
             <button type="submit" ng-disabled="addTeacherForm.$invalid" class="btn waves-effect waves-light modal-close">Зберегти</button>

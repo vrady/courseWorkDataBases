@@ -4,12 +4,10 @@
     angular
         .module('scheduleKpi')
         .controller('teachersController', teachersController)
-        .controller('teachersAddController', teachersAddController)
-        .controller('teachersEditController', teachersEditController)
-        .controller('teachersDeleteController', teachersDeleteController);
+        .controller('teachersEditController', teachersEditController);
 
-    teachersController.$inject = ['$scope', 'Teacher', 'orderByFilter'];
-    function teachersController($scope, Teacher, orderBy) {
+    teachersController.$inject = ['$scope', 'Teacher', 'orderByFilter','$route'];
+    function teachersController($scope, Teacher, orderBy, $route) {
 
         $scope.teachers = Teacher.query();
 
@@ -23,16 +21,17 @@
             $scope.teachers = orderBy($scope.teachers, $scope.propertyName, $scope.reverse);
         };
 
-    }
-
-    teachersAddController.$inject = ['$scope', 'Teacher', '$location'];
-    function teachersAddController($scope, Teacher, $loaction) {
-
-        $scope.teacher = new Teacher();
-
+        $scope.newTeacher = new Teacher();
         $scope.addTeacher = function () {
-            $scope.teacher.$save(function () {
-                $loaction.path('/')
+            $scope.newTeacher.$save(function () {
+                $route.reload();
+            })
+        }
+        
+        $scope.deleteTeacher = function (deletedTeacher) {
+            $scope.deletedTeacher = deletedTeacher;
+            $scope.deletedTeacher.$remove({ id: $scope.deletedTeacher.id }, function () {
+                $route.reload();
             })
         }
 
@@ -48,19 +47,6 @@
                 $location.path('/')
             })
         }
-    }
-
-    teachersDeleteController.$inject = ['$scope', 'Teacher', '$location', '$routeParams'];
-    function teachersDeleteController($scope, Teacher, $location, $routeParams) {
-
-        $scope.teacher = Teacher.get({ id: $routeParams.id });
-
-        $scope.deleteTeacher = function () {
-            $scope.teacher.$remove({ id: $scope.teacher.id }, function () {
-                $location.path('/')
-            })
-        }
-
     }
 
 })();

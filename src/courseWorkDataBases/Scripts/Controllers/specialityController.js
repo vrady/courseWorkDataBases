@@ -4,12 +4,10 @@
     angular
         .module('scheduleKpi')
         .controller('specialityController', specialityController)
-        .controller('specialityAddController', specialityAddController)
-        .controller('specialityEditController', specialityEditController)
-        .controller('specialityDeleteController', specialityDeleteController);
+        .controller('specialityEditController', specialityEditController);
 
-    specialityController.$inject = ['$scope', 'Speciality', 'orderByFilter'];
-    function specialityController($scope, Speciality, orderBy) {
+    specialityController.$inject = ['$scope', 'Speciality', 'orderByFilter', '$route'];
+    function specialityController($scope, Speciality, orderBy, $route) {
 
         $scope.specialities = Speciality.query();
 
@@ -23,15 +21,16 @@
             $scope.specialities = orderBy($scope.specialities, $scope.propertyName, $scope.reverse);
         };
 
-    }
+        $scope.deleteSpeciality = function (deletedSpeciality) {
+            $scope.deletedSpeciality = deletedSpeciality;
+            $scope.deletedSpeciality.$remove({ id: $scope.deletedSpeciality.id }, function () {
+                $route.reload();
+            })
+        }
 
-    specialityAddController.$inject = ['$scope', 'Speciality', '$route'];
-    function specialityAddController($scope, Speciality,  $route) {
-
-        $scope.speciality = new Speciality();
-
+        $scope.newSpeciality = new Speciality();
         $scope.addSpeciality = function () {
-            $scope.speciality.$save(function () {
+            $scope.newSpeciality.$save(function () {
                 $route.reload();
             })
         }
@@ -50,15 +49,4 @@
         }
     }
 
-    specialityDeleteController.$inject = ['$scope', 'Speciality', '$location', '$routeParams'];
-    function specialityDeleteController($scope, Speciality, $location, $routeParams) {
-        $scope.speciality = Speciality.get({ id: $routeParams.id });
-
-        $scope.deleteSpeciality = function () {
-            $scope.speciality.$remove({ id: $scope.speciality.id }, function () {
-                $location.path('/specialities')
-            })
-        }
-
-    }
 })();
