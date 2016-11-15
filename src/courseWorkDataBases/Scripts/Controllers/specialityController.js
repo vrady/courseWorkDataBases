@@ -25,14 +25,14 @@
 
     }
 
-    specialityAddController.$inject = ['$scope', 'Speciality', '$location'];
-    function specialityAddController($scope, Speciality, $loaction) {
+    specialityAddController.$inject = ['$scope', 'Speciality', '$route'];
+    function specialityAddController($scope, Speciality,  $route) {
 
         $scope.speciality = new Speciality();
 
         $scope.addSpeciality = function () {
             $scope.speciality.$save(function () {
-                $loaction.path('/')
+                $route.reload();
             })
         }
 
@@ -52,12 +52,11 @@
 
     specialityDeleteController.$inject = ['$scope', 'Speciality', '$location', '$routeParams'];
     function specialityDeleteController($scope, Speciality, $location, $routeParams) {
-
         $scope.speciality = Speciality.get({ id: $routeParams.id });
 
         $scope.deleteSpeciality = function () {
             $scope.speciality.$remove({ id: $scope.speciality.id }, function () {
-                $location.path('/')
+                $location.path('/specialities')
             })
         }
 

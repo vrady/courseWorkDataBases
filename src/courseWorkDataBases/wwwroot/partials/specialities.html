@@ -1,7 +1,7 @@
 ﻿<div class="container">
     <h2 class="light">Список спеціальностей</h2>
-    <a class="btn waves-effect waves-light" href="/specialities/add">Додати нову спеціальність</a>
-    <table class="striped responsive-table">
+    <button class="btn waves-effect waves-default modal-trigger" data-target="modal1">Додати нову спеціальність</button>
+    <table class="striped">
         <thead>
             <tr>
                 <th data-field="id">
@@ -30,3 +30,23 @@
         </tbody>
     </table>
 </div>
+<!-- Modal Structure -->
+<div id="modal1" class="modal bottom-sheet" ng-controller="specialityAddController">
+    <div class="modal-content">
+        <h4>Додати нову спеціальність {{speciality.name}}</h4>
+        <form name="addSpecialityForm" ng-submit="addSpeciality()">
+            <div class="input-field col s12">
+                <input id="groupName" type="text" name="name" ng-model="speciality.name" required /><br />
+                <label for="groupName">Назва спеціальності</label>
+            </div>
+            <button type="submit" ng-disabled="addSpecialityForm.$invalid" class="btn modal-close waves-effect waves-light">Зберегти</button>
+            <a class="btn waves-effect modal-close waves-light">Відмінити</a>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal();
+    });
+</script>
