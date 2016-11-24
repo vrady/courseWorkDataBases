@@ -29,6 +29,8 @@
 
         $scope.newSpeciality = new Speciality();
         $scope.addSpeciality = function () {
+
+            console.log($scope.newSpeciality);
             $scope.newSpeciality.$save(function () {
                 $route.reload();
             })

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('audiencesController', ['ngResource']).factory('Audience', Audience);
+        .module('audiencesService', ['ngResource']).factory('Audience', Audience);
 
     Audience.$inject = ['$resource'];
 

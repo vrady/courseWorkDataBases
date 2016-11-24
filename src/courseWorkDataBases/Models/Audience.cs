@@ -22,6 +22,7 @@ namespace courseWorkDataBases.Models
         public int Quantity { get; set; }
 
         [Required]
+        [MaxLength(15)]
         public string Type { get; set; }
 
         public virtual ICollection<Shedule> Shedules { get; set; }

@@ -22,6 +22,7 @@
 
         $scope.newAudience = new Audience();
         $scope.addAudience = function () {
+            console.log($scope.newAudience);
             $scope.newAudience.$save(function () {
                 $route.reload();
             })

@@ -22,6 +22,7 @@
 
         $scope.newSubject = new Subject();
         $scope.addSubject = function () {
+            console.log($scope.newSubject);
             $scope.newSubject.$save(function () {
                 $route.reload();
             })
