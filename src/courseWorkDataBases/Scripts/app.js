@@ -26,10 +26,6 @@
                 templateUrl: 'partials/groups.html',
                 controller: 'groupsController'
             })
-            .when('/groups/edit/:id', {
-                templateUrl: 'partials/groupsEdit.html',
-                controller: 'groupsEditController'
-            })
             .when('/specialities', {
                 templateUrl: 'partials/specialities.html',
                 controller: 'specialityController'

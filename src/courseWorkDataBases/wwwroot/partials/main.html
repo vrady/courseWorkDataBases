@@ -1,13 +1,13 @@
 ﻿<div class="container">
     <div class="row">
         <br /><br />
-        <form class="col l4 offset-l4 s12 m4 offset-m4">
+        <form name="searchSchedule" ng-submit="" class="col l4 offset-l4 s12 m4 offset-m4">
             <div class="input-field col s12">
-                <input id="searchGroup" type="text" />
+                <input id="searchGroup" ng-model="group.name" type="text" required />
                 <label for="searchGroup">Введіть назву групи</label>
-                <div>
-                    <div class="btn waves-effect waves-light" style="display:block">Розклад</div>
-                </div>
+            </div>
+            <div class="center-align">
+                <button type="submit" ng-disabled="searchSchedule.$invalid" class="btn waves-effect waves-light">Розклад</button>
             </div>
         </form>
     </div>

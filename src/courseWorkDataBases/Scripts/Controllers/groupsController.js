@@ -3,11 +3,9 @@
 
     angular
         .module('scheduleKpi')
-        .controller('groupsController', groupsController)
-        .controller('groupsEditController', groupsEditController);
+        .controller('groupsController', groupsController);
 
     groupsController.$inject = ['$scope', 'Group', 'orderByFilter', '$route'];
-    groupsEditController.$inject = ['$scope', 'Group', '$location', '$routeParams'];
 
     function groupsController($scope, Group, orderBy, $route) {
         $scope.groups = Group.query();
@@ -36,16 +34,26 @@
                 $route.reload();
             })
         }
-    }
 
-    function groupsEditController($scope, Group, $location, $routeParams) {
+        $scope.showEditForm = function (editGroup) {
+            setTimeout(function () {
+                Materialize.updateTextFields();
+            },200)
+            $scope.editGroup = editGroup;
+            $scope.editedGroupName = editGroup.name;
+            $scope.editedGroup = Group.get({ id: $scope.editGroup.id });
+            console.log($scope.editedGroup)
+            //$scope.clearForm();
+            
+            // show modal
+            //$('#modal2').show();
 
-        $scope.group = Group.get({ id: $routeParams.id });
-
-        $scope.editGroup = function() {
-            $scope.group.$save(function() {
-                $location.path('/')
-            })
+            $scope.editGroup = function () {
+                $scope.editedGroup.$save(function () {
+                    //$('#modal2').closeModal();
+                    $route.reload();
+                })
+            }
         }
     }
 

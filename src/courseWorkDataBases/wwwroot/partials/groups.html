@@ -24,12 +24,8 @@
                     <button class="btn-large transparent black-text" ng-click="sortBy('quantity')"><h6>Кількість студентів</h6></button>
                     <span ng-show="propertyName === 'quantity'" ng-class="{reverse: reverse}"></span>
                 </th>
-                <th>
-                    <button class="btn-large transparent black-text"><h6>Видалення</h6></button>
-                </th>
-                <th>
-                    <button class="btn-large transparent black-text"><h6>Редагування</h6></button>
-                </th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +36,7 @@
                 <td>{{group.course}}</td>
                 <td>{{group.quantity}}</td>
                 <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteGroup(group)">Видалити групу</a></td>
-                <td><a class="btn waves-effect waves-light" href="/groups/edit/{{group.id}}">Редагувати групу</a></td>
+                <td><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(group)" data-target="modal2">Редагувати групу</a></td>
             </tr>
         </tbody>
     </table>
@@ -71,9 +67,38 @@
         </form>
     </div>
 </div>
+<!--modal2-->
+<div id="modal2" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>Редагувати групу {{editedGroupName}}</h4>
+        <form name="editGroupForm" ng-submit="editGroup()">
+            <div class="input-field col s12">
+                <input id="groupName" type="text" name="name" ng-model="editedGroup.name" required /><br />
+                <label for="groupName">Назва групи</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="groupCourse" type="number" name="course" ng-model="editedGroup.course" required /><br />
+                <label for="groupCourse">Курс</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="groupSpeciality" type="text" name="specialityId" ng-model="editedGroup.specialityId" required /><br />
+                <label for="groupSpeciality">Спеціальність</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="groupQuantity" type="number" name="quantity" ng-model="editedGroup.quantity" required /><br />
+                <label for="groupQuantity">Кількість студентів в групі</label>
+            </div>
+            <button type="submit" ng-disabled="editGroupForm.$invalid" class="btn modal-close waves-effect waves-light">Зберегти</button>
+            <a class="btn waves-effect modal-close waves-light">Відмінити</a>
+        </form>
+    </div>
+</div>
 <script>
     $(document).ready(function () {
         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-        $('.modal-trigger').leanModal();
+        setTimeout(function () {
+            $('.modal-trigger').leanModal();
+            $('.modal-trigger2').leanModal();
+        },1000)
     });
 </script>
