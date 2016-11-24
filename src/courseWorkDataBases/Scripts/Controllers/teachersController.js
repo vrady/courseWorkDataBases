@@ -22,6 +22,7 @@
 
         $scope.newTeacher = new Teacher();
         $scope.addTeacher = function () {
+            console.log($scope.newTeacher);
             $scope.newTeacher.$save(function () {
                 $route.reload();
             })

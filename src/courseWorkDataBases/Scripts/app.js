@@ -12,7 +12,7 @@
         'teachersService',
         'plansService',
         'subjectsService',
-        'audiencesController'
+        'audiencesService'
 
         // 3rd Party Modules
 

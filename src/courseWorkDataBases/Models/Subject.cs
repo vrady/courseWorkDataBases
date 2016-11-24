@@ -13,6 +13,6 @@ namespace courseWorkDataBases.Models
 
         [Required]
         [MaxLength(50)]
-        public int Name { get; set; }
+        public string Name { get; set; }
     }
 }
