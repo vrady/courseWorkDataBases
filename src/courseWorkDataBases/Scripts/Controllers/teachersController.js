@@ -39,7 +39,7 @@
                 Materialize.updateTextFields();
             }, 200)
             $scope.editTeacher = editTeacher;
-            $scope.editedTeacherName = editTeacher.name;
+            $scope.editedTeacherName = editTeacher.fullName;
             $scope.editedTeacher = Teacher.get({ id: $scope.editTeacher.id });
 
             $scope.editTeacher = function () {

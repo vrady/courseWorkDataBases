@@ -5,8 +5,8 @@
         <thead>
             <tr>                
                 <th data-field="name">
-                    <button class="btn-large transparent black-text" ng-click="sortBy('name')"><h6>ПІБ викладача</h6></button>
-                    <span ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+                    <button class="btn-large transparent black-text" ng-click="sortBy('fullName')"><h6>ПІБ викладача</h6></button>
+                    <span ng-show="propertyName === 'fullName'" ng-class="{reverse: reverse}"></span>
                 </th>
                 <th></th>
                 <th></th>
@@ -14,7 +14,7 @@
         </thead>
         <tbody>
             <tr class="group-item" ng-repeat="teacher in teachers">
-                <td>{{teacher.name}}</td>
+                <td>{{teacher.fullName}}</td>
                 <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteTeacher(teacher)">Видалити спеціальність</a></td>
                 <td><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(teacher)" data-target="modal2">Редагувати спеціальність</a></td>
             </tr>
@@ -24,10 +24,10 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
-        <h4>Додати нового викладача {{newTeacher.name}}</h4>
+        <h4>Додати нового викладача {{newTeacher.fullName}}</h4>
         <form name="addTeacherForm" ng-submit="addTeacher()">
             <div class="input-field col s12">
-                <input id="groupName" type="text" name="name" ng-model="newTeacher.name" required /><br />
+                <input id="groupName" type="text" name="name" ng-model="newTeacher.fullName" required /><br />
                 <label for="groupName">ПІБ викладача</label>
             </div>
             <button type="submit" ng-disabled="addTeacherForm.$invalid" class="btn waves-effect waves-light modal-close">Зберегти</button>
@@ -41,7 +41,7 @@
         <h4>Додати нового викладача {{editedTeacherName}}</h4>
         <form name="editTeacherForm" ng-submit="editTeacher()">
             <div class="input-field col s12">
-                <input id="groupName" type="text" name="name" ng-model="editTeacher.name" required /><br />
+                <input id="groupName" type="text" name="name" ng-model="editTeacher.fullName" required /><br />
                 <label for="groupName">ПІБ викладача</label>
             </div>
             <button type="submit" ng-disabled="editTeacherForm.$invalid" class="btn waves-effect waves-light modal-close">Зберегти</button>
