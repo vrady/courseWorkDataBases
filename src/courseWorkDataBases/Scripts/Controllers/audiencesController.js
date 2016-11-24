@@ -10,7 +10,7 @@
 
         $scope.audiences = Audience.query();
 
-        $scope.propertyName = 'id';
+        $scope.propertyName = 'number';
         $scope.reverse = true;
 
         $scope.sortBy = function (propertyName) {

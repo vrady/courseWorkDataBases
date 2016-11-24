@@ -14,11 +14,9 @@ namespace courseWorkDataBases.Models
         public int? Id { get; set; }
 
         [Required]
-        [CustomValidation(typeof(CustomValidator), "MoreThanZero")]
         public int Number { get; set; }
 
         [Required]
-        [CustomValidation(typeof(CustomValidator), "MoreThanZero")]
         public int Quantity { get; set; }
 
         [Required]
