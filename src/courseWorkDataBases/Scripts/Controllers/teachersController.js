@@ -3,8 +3,7 @@
 
     angular
         .module('scheduleKpi')
-        .controller('teachersController', teachersController)
-        .controller('teachersEditController', teachersEditController);
+        .controller('teachersController', teachersController);
 
     teachersController.$inject = ['$scope', 'Teacher', 'orderByFilter','$route'];
     function teachersController($scope, Teacher, orderBy, $route) {
@@ -35,18 +34,21 @@
             })
         }
 
-    }
+        $scope.showEditForm = function (editTeacher) {
+            setTimeout(function () {
+                Materialize.updateTextFields();
+            }, 200)
+            $scope.editTeacher = editTeacher;
+            $scope.editedTeacherName = editTeacher.name;
+            $scope.editedTeacher = Teacher.get({ id: $scope.editTeacher.id });
 
-    teachersEditController.$inject = ['$scope', 'Teacher', '$location', '$routeParams'];
-    function teachersEditController($scope, Teacher, $location, $routeParams) {
-
-        $scope.teacher = Teacher.get({ id: $routeParams.id });
-
-        $scope.editTeacher = function () {
-            $scope.teacher.$save(function () {
-                $location.path('/')
-            })
+            $scope.editTeacher = function () {
+                $scope.editedTeacher.$save(function () {
+                    $route.reload();
+                })
+            }
         }
+
     }
 
 })();

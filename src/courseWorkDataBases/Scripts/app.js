@@ -30,17 +30,9 @@
                 templateUrl: 'partials/specialities.html',
                 controller: 'specialityController'
             })
-            .when('/specialities/edit/:id', {
-                templateUrl: 'partials/specialitiesEdit.html',
-                controller: 'specialityEditController'
-            })
             .when('/teachers', {
                 templateUrl: 'partials/teachers.html',
                 controller: 'teachersController'
-            })
-            .when('/teachers/edit/:id', {
-                templateUrl: 'partials/teachersEdit.html',
-                controller: 'teachersEditController'
             })
             .when('/login', {
                 templateUrl: 'partials/login.html',

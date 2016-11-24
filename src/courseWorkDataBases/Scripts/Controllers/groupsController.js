@@ -42,15 +42,9 @@
             $scope.editGroup = editGroup;
             $scope.editedGroupName = editGroup.name;
             $scope.editedGroup = Group.get({ id: $scope.editGroup.id });
-            console.log($scope.editedGroup)
-            //$scope.clearForm();
-            
-            // show modal
-            //$('#modal2').show();
 
             $scope.editGroup = function () {
                 $scope.editedGroup.$save(function () {
-                    //$('#modal2').closeModal();
                     $route.reload();
                 })
             }
