@@ -1,0 +1,86 @@
+﻿<div class="container">
+    <h2 class="light">Список аудиторій</h2>
+    <button class="btn waves-effect waves-default modal-trigger" data-target="modal1">Додати нову аудиторію</button>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th data-field="number">
+                    <button class="btn-large transparent black-text" ng-click="sortBy('number')"><h6>Номер аудиторії</h6></button>
+                    <span ng-show="propertyName === 'number'" ng-class="{reverse: reverse}"></span>
+                </th>
+                <th data-field="quantity">
+                    <button class="btn-large transparent black-text" ng-click="sortBy('quantity')"><h6>Вмістимість</h6></button>
+                    <span ng-show="propertyName === 'quantity'" ng-class="{reverse: reverse}"></span>
+                </th>
+                <th data-field="type">
+                    <button class="btn-large transparent black-text" ng-click="sortBy('type')"><h6>Тип аудиторії</h6></button>
+                    <span ng-show="propertyName === 'type'" ng-class="{reverse: reverse}"></span>
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="group-item" ng-repeat="audience in audiences">
+                <td class="center-align">{{audience.number}}</td>
+                <td class="center-align">{{audience.quantity}}</td>
+                <td class="center-align">{{audience.type}}</td>
+                <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteAudience(audience)">Видалити аудиторію</a></td>
+                <td><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(audience)" data-target="modal2">Редагувати предмет</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Modal Structure -->
+<div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>Додати нову аудиторію {{newAudience.name}}</h4>
+        <form name="addAudienceForm" ng-submit="addAudience()">
+            <div class="input-field col s12">
+                <input id="audienceNumber" type="text" name="number" ng-model="newAudience.number" required /><br />
+                <label for="audienceNumber">Номер аудиторії</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="audienceQuantity" type="text" name="quantity" ng-model="newAudience.quantity" required /><br />
+                <label for="audienceQuantity">Вмістимість</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="audienceType" type="text" name="type" ng-model="newAudience.type" required /><br />
+                <label for="audienceType">Тип аудиторії</label>
+            </div>
+            <button type="submit" ng-disabled="addAudienceForm.$invalid" class="btn modal-close waves-effect waves-light">Зберегти</button>
+            <a class="btn waves-effect modal-close waves-light">Відмінити</a>
+        </form>
+    </div>
+</div>
+<!-- Modal2 -->
+<div id="modal2" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>Редагувати аудиторію {{editedAudienceName}}</h4>
+        <form name="editAudienceForm" ng-submit="editAudience()">
+            <div class="input-field col s12">
+                <input id="audienceNumber" type="text" name="number" ng-model="editedAudience.number" required /><br />
+                <label for="audienceNumber">Номер аудиторії</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="audienceQuantity" type="text" name="quantity" ng-model="editedAudience.quantity" required /><br />
+                <label for="audienceQuantity">Вмістимість</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="audienceType" type="text" name="type" ng-model="editedAudience.type" required /><br />
+                <label for="audienceType">Тип аудиторії</label>
+            </div>
+            <button type="submit" ng-disabled="editAudienceForm.$invalid" class="btn modal-close waves-effect waves-light">Зберегти</button>
+            <a class="btn waves-effect modal-close waves-light">Відмінити</a>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        setTimeout(function () {
+            $('.modal-trigger').leanModal();
+            $('.modal-trigger2').leanModal();
+        }, 1000)
+    });
+</script>

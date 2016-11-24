@@ -1,0 +1,60 @@
+﻿<div class="container">
+    <h2 class="light">Список предметів</h2>
+    <button class="btn waves-effect waves-default modal-trigger" data-target="modal1">Додати новий предмет</button>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th data-field="name">
+                    <button class="btn-large transparent black-text" ng-click="sortBy('name')"><h6>Назва предмета</h6></button>
+                    <span ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="group-item" ng-repeat="subject in subjects">
+                <td class="center-align">{{subject.name}}</td>
+                <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteSubject(subject)">Видалити предмет</a></td>
+                <td><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(subject)" data-target="modal2">Редагувати предмет</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Modal Structure -->
+<div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>Додати новий предмет {{newSubject.name}}</h4>
+        <form name="addSubjectForm" ng-submit="addSubject()">
+            <div class="input-field col s12">
+                <input id="subjectName" type="text" name="name" ng-model="newSubject.name" required /><br />
+                <label for="subjectName">Назва предмета</label>
+            </div>
+            <button type="submit" ng-disabled="addSubjectForm.$invalid" class="btn modal-close waves-effect waves-light">Зберегти</button>
+            <a class="btn waves-effect modal-close waves-light">Відмінити</a>
+        </form>
+    </div>
+</div>
+<!-- Modal2 -->
+<div id="modal2" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>Редагувати предмет {{editedSubjectName}}</h4>
+        <form name="editSubjectForm" ng-submit="editSubject()">
+            <div class="input-field col s12">
+                <input id="subjectName" type="text" name="name" ng-model="editedSubject.name" required /><br />
+                <label for="subjectName">Назва спеціальності</label>
+            </div>
+            <button type="submit" ng-disabled="editSubjectForm.$invalid" class="btn modal-close waves-effect waves-light">Зберегти</button>
+            <a class="btn waves-effect modal-close waves-light">Відмінити</a>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        setTimeout(function () {
+            $('.modal-trigger').leanModal();
+            $('.modal-trigger2').leanModal();
+        }, 1000)
+    });
+</script>

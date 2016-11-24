@@ -9,7 +9,10 @@
         // Custom modules
         'groupsService',
         'specialityService',
-        'teachersService'
+        'teachersService',
+        'plansService',
+        'subjectsService',
+        'audiencesController'
 
         // 3rd Party Modules
 
@@ -33,6 +36,18 @@
             .when('/teachers', {
                 templateUrl: 'partials/teachers.html',
                 controller: 'teachersController'
+            })
+            .when('/subjects', {
+                templateUrl: 'partials/subjects.html',
+                controller: 'subjectsController'
+            })
+            .when('/audiences', {
+                templateUrl: 'partials/audiences.html',
+                controller: 'audiencesController'
+            })
+            .when('/plans/:id', {
+                templateUrl: 'partials/plan.html',
+                controller: 'plansController'
             })
             .when('/login', {
                 templateUrl: 'partials/login.html',

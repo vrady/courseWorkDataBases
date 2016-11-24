@@ -1,0 +1,112 @@
+﻿<div class="container">
+    <h2 class="light">План для спеціальності {{plan.name}}</h2>
+    <a class="btn waves-effect waves-light modal-trigger" data-target="modal1">Додати новий предмет</a>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th data-field="name">
+                    <button class="btn-large transparent black-text" ng-click="sortBy('name')"><h6>Назва предмету</h6></button>
+                    <span ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+                </th>
+                <th data-field="semester">
+                    <button class="btn-large transparent black-text" ng-click="sortBy('semester')"><h6>Номер семестру</h6></button>
+                    <span ng-show="propertyName === 'semester'" ng-class="{reverse: reverse}"></span>
+                </th>
+                <th data-field="lectures">
+                    <button class="btn-large transparent black-text" ng-click="sortBy('lectures')"><h6>Кількість лекцій</h6></button>
+                    <span ng-show="propertyName === 'lectures'" ng-class="{reverse: reverse}"></span>
+                </th>
+                <th data-field="practices">
+                    <button class="btn-large transparent black-text" ng-click="sortBy('practices')"><h6>Кількість практик</h6></button>
+                    <span ng-show="propertyName === 'practices'" ng-class="{reverse: reverse}"></span>
+                </th>
+                <th data-field="teacher">
+                    <button class="btn-large transparent black-text" ng-click="sortBy('teacher')"><h6>Викладач</h6></button>
+                    <span ng-show="propertyName === 'teacher'" ng-class="{reverse: reverse}"></span>
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="group-item" ng-repeat="subject in plan">
+                <td>{{subject.name}}</td>
+                <td>{{subject.semester}}</td>
+                <td>{{subject.lectures}}</td>
+                <td>{{subject.practices}}</td>
+                <td>{{subject.teacher}}</td>
+                <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteSubject(subject)">Видалити предмет</a></td>
+                <td><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(subject)" data-target="modal2">Редагувати предмет</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Modal Structure -->
+<div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>Додати новий предмет {{newSubject.name}}</h4>
+        <form name="addSubjectForm" ng-submit="addSubject()">
+            <div class="input-field col s12">
+                <input id="subjectName" type="text" name="name" ng-model="newSubject.name" required /><br />
+                <label for="subjectName">Назва предмету</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="subjectSemester" type="number" name="semester" ng-model="newGroup.semester" required /><br />
+                <label for="subjectSemester">Семестр</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="subjectLectures" type="number" name="lectures" ng-model="newGroup.lectures" required /><br />
+                <label for="subjectLectures">Кількість леккцій</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="subjectPractices" type="number" name="practices" ng-model="newGroup.practices" required /><br />
+                <label for="subjectPractices">Кількість практик</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="subjectTeacher" type="text" name="teacher" ng-model="newSubject.teacher" required /><br />
+                <label for="subjectTeacher">Викладач</label>
+            </div>
+            <button type="submit" ng-disabled="addSubjectForm.$invalid" class="btn modal-close waves-effect waves-light">Зберегти</button>
+            <a class="btn waves-effect modal-close waves-light">Відмінити</a>
+        </form>
+    </div>
+</div>
+<!--modal2-->
+<div id="modal2" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>Редагувати предмет {{editedSubjectName}}</h4>
+        <form name="editSubjectForm" ng-submit="editSubject()">
+            <div class="input-field col s12">
+                <input id="subjectName" type="text" name="name" ng-model="editedSubject.name" required /><br />
+                <label for="subjectName">Назва предмету</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="subjectSemester" type="number" name="semester" ng-model="editedGroup.semester" required /><br />
+                <label for="subjectSemester">Семестр</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="subjectLectures" type="number" name="lectures" ng-model="editedGroup.lectures" required /><br />
+                <label for="subjectLectures">Кількість леккцій</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="subjectPractices" type="number" name="practices" ng-model="editedGroup.practices" required /><br />
+                <label for="subjectPractices">Кількість практик</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="subjectTeacher" type="text" name="teacher" ng-model="editedSubject.teacher" required /><br />
+                <label for="subjectTeacher">Викладач</label>
+            </div>
+            <button type="submit" ng-disabled="editSubjectForm.$invalid" class="btn modal-close waves-effect waves-light">Зберегти</button>
+            <a class="btn waves-effect modal-close waves-light">Відмінити</a>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        setTimeout(function () {
+            $('.modal-trigger').leanModal();
+            $('.modal-trigger2').leanModal();
+        },1000)
+    });
+</script>

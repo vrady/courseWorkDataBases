@@ -21,9 +21,10 @@ namespace courseWorkDataBases.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<object> Get()
+        public IEnumerable<Group> Get()
         {
-            return _dbContext.Groups.Join(_dbContext.Specialities, x => x.SpecialityId, x => x.Id, (x, y) => new { Group = x, Speciality = y });
+            return _dbContext.Groups.Join(_dbContext.Specialities, x => x.SpecialityId, x => x.Id, (x, y) => new Group { Id = x.Id, Course = x.Course, Name = x.Name, Quantity = x.Quantity, Speciality = y, SpecialityId = (int)y.Id});
+
         }
 
         // GET api/values/5

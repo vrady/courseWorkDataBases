@@ -14,9 +14,9 @@
         </thead>
         <tbody>
             <tr class="group-item" ng-repeat="teacher in teachers">
-                <td>{{teacher.fullName}}</td>
-                <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteTeacher(teacher)">Видалити спеціальність</a></td>
-                <td><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(teacher)" data-target="modal2">Редагувати спеціальність</a></td>
+                <td class="center-align">{{teacher.fullName}}</td>
+                <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteTeacher(teacher)">Видалити викладача</a></td>
+                <td><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(teacher)" data-target="modal2">Редагувати викладача</a></td>
             </tr>
         </tbody>
     </table>
@@ -38,10 +38,10 @@
 <!-- Modal Structure -->
 <div id="modal2" class="modal bottom-sheet">
     <div class="modal-content">
-        <h4>Додати нового викладача {{editedTeacherName}}</h4>
+        <h4>Редагувати викладача {{editedTeacherName}}</h4>
         <form name="editTeacherForm" ng-submit="editTeacher()">
             <div class="input-field col s12">
-                <input id="groupName" type="text" name="name" ng-model="editTeacher.fullName" required /><br />
+                <input id="groupName" type="text" name="name" ng-model="editedTeacher.fullName" required /><br />
                 <label for="groupName">ПІБ викладача</label>
             </div>
             <button type="submit" ng-disabled="editTeacherForm.$invalid" class="btn waves-effect waves-light modal-close">Зберегти</button>

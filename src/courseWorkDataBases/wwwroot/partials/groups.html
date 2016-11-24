@@ -4,16 +4,12 @@
     <table class="striped">
         <thead>
             <tr>
-                <th data-field="id">
-                    <button class="btn-large transparent black-text" ng-click="sortBy('id')"><h6>Номер групи</h6></button>
-                    <span ng-show="propertyName === 'id'" ng-class="{reverse: reverse}"></span>
-                </th>
                 <th data-field="name">
                     <button class="btn-large transparent black-text" ng-click="sortBy('name')"><h6>Назва групи</h6></button>
                     <span ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
                 </th>
                 <th data-field="name">
-                    <button class="btn-large transparent black-text" ng-click="sortBy('specialityId')"><h6>Номер спеціальності</h6></button>
+                    <button class="btn-large transparent black-text" ng-click="sortBy('specialityId')"><h6>Назва спеціальності</h6></button>
                     <span ng-show="propertyName === 'specialityId'" ng-class="{reverse: reverse}"></span>
                 </th>
                 <th data-field="course">
@@ -30,11 +26,10 @@
         </thead>
         <tbody>
             <tr class="group-item" ng-repeat="group in groups">
-                <td>{{group.id}}</td>
-                <td>{{group.name}}</td>
-                <td>{{group.specialityId}}</td>
-                <td>{{group.course}}</td>
-                <td>{{group.quantity}}</td>
+                <td class="center-align">{{group.name}}</td>
+                <td class="center-align">{{group.speciality.name}}</td>
+                <td class="center-align">{{group.course}}</td>
+                <td class="center-align">{{group.quantity}}</td>
                 <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteGroup(group)">Видалити групу</a></td>
                 <td><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(group)" data-target="modal2">Редагувати групу</a></td>
             </tr>
@@ -55,9 +50,16 @@
                 <label for="groupCourse">Курс</label>
             </div>
             <div class="input-field col s12">
-                <input id="groupSpeciality" type="text" name="specialityId" ng-model="newGroup.specialityId" required /><br />
-                <label for="groupSpeciality">Спеціальність</label>
+                <select name="specialityId" ng-model="newGroup.specialityId" required>
+                    <option value="" disabled selected>Спеціальність</option>
+                    <option ng-repeat="speciality in specialities" value="{{speciality.id}}">{{speciality.name}}</option>
+                </select>
+                <label>Спеціальність</label>
             </div>
+            <!--<div class="input-field col s12">
+                <input id="groupSpeciality" type="text" name="specialityId" ng-model="newGroup.speciality.name" required /><br />
+                <label for="groupSpeciality">Спеціальність</label>
+            </div>-->
             <div class="input-field col s12">
                 <input id="groupQuantity" type="number" name="quantity" ng-model="newGroup.quantity" required /><br />
                 <label for="groupQuantity">Кількість студентів в групі</label>
@@ -81,9 +83,15 @@
                 <label for="groupCourse">Курс</label>
             </div>
             <div class="input-field col s12">
+                <select name="specialityId" ng-model="editedGroup.specialityId" required>
+                    <option ng-repeat="speciality in specialities" value="{{speciality.id}}">{{speciality.name}}</option>
+                </select>
+                <label>Спеціальність</label>
+            </div>
+            <!--<div class="input-field col s12">
                 <input id="groupSpeciality" type="text" name="specialityId" ng-model="editedGroup.specialityId" required /><br />
                 <label for="groupSpeciality">Спеціальність</label>
-            </div>
+            </div>-->
             <div class="input-field col s12">
                 <input id="groupQuantity" type="number" name="quantity" ng-model="editedGroup.quantity" required /><br />
                 <label for="groupQuantity">Кількість студентів в групі</label>
@@ -99,6 +107,7 @@
         setTimeout(function () {
             $('.modal-trigger').leanModal();
             $('.modal-trigger2').leanModal();
+            $('select').material_select();
         },1000)
     });
 </script>

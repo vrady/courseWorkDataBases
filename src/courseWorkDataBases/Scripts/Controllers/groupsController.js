@@ -5,11 +5,11 @@
         .module('scheduleKpi')
         .controller('groupsController', groupsController);
 
-    groupsController.$inject = ['$scope', 'Group', 'orderByFilter', '$route'];
+    groupsController.$inject = ['$scope', 'Group', 'Speciality', 'orderByFilter', '$route'];
 
-    function groupsController($scope, Group, orderBy, $route) {
+    function groupsController($scope, Group, Speciality, orderBy, $route) {
         $scope.groups = Group.query();
-
+        $scope.specialities = Speciality.query();
         $scope.propertyName = 'id';
         $scope.reverse = true;
         //$scope.groups = orderBy($scope.groups, $scope.propertyName, $scope.reverse);
@@ -44,6 +44,7 @@
             $scope.editedGroup = Group.get({ id: $scope.editGroup.id });
 
             $scope.editGroup = function () {
+                console.log($scope.editedGroup)
                 $scope.editedGroup.$save(function () {
                     $route.reload();
                 })

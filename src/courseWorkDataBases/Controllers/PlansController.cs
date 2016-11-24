@@ -59,7 +59,7 @@ namespace courseWorkDataBases.Controllers
                 //existingPlan.Quantity = plan.Quantity;
 
                 //_dbContext.SaveChanges();
-                return new ObjectResult(existingPlan);
+                //return new ObjectResult(existingPlan);
             }
         }
 

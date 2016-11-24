@@ -4,10 +4,6 @@
     <table class="striped">
         <thead>
             <tr>
-                <th data-field="id">
-                    <button class="btn-large transparent black-text" ng-click="sortBy('id')"><h6>Номер спеціальності</h6></button>
-                    <span ng-show="propertyName === 'id'" ng-class="{reverse: reverse}"></span>
-                </th>
                 <th data-field="name">
                     <button class="btn-large transparent black-text" ng-click="sortBy('name')"><h6>Назва спеціальності</h6></button>
                     <span ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
@@ -18,8 +14,8 @@
         </thead>
         <tbody>
             <tr class="group-item" ng-repeat="speciality in specialities">
-                <td>{{speciality.id}}</td>
-                <td>{{speciality.name}}</td>
+                <td class="center-align">{{speciality.name}}</td>
+                <td><a class="btn waves-effect waves-light green lighten-2" ng-href="/plans/{{speciality.id}}">План</a></td>
                 <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteSpeciality(speciality)">Видалити спеціальність</a></td>
                 <td><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(speciality)" data-target="modal2">Редагувати спеціальність</a></td>
             </tr>
