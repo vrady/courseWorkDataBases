@@ -10,31 +10,24 @@ using courseWorkDataBases.Models;
 namespace courseWorkDataBases.Controllers
 {
     [Route("api/[controller]")]
-    public class GroupsController : Controller
+    public class PlansController : Controller
     {
         private readonly GroupsAppContext _dbContext;
 
-        public GroupsController(GroupsAppContext dbContext)
+        public PlansController(GroupsAppContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<object> Get()
-        {
-            return _dbContext.Groups.Join(_dbContext.Specialities, x => x.SpecialityId, x => x.Id, (x, y) => new { Group = x, Speciality = y });
-        }
-
         // GET api/values/5
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet("{specialityId}")]
+        public IActionResult Get(int specialityId)
         {
-            var group = _dbContext.Groups.FirstOrDefault(x => x.Id == id);
+            var plans = _dbContext.Plans.Where(x => x.SpecialityId == specialityId);
 
-            if(group != null)
+            if(plans.Any())
             {
-                return new ObjectResult(group);
+                return new ObjectResult(plans);
             }
             else
             {
@@ -44,27 +37,29 @@ namespace courseWorkDataBases.Controllers
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody]Group group)
+        public IActionResult Post([FromBody]Plan plan)
         {
-            if(group.Id == null)
+
+            throw new NotImplementedException();
+            if(plan.Id == null)
             {
-                _dbContext.Groups.Add(group);
+                _dbContext.Plans.Add(plan);
 
                 _dbContext.SaveChanges();
 
-                return new ObjectResult(group);
+                return new ObjectResult(plan);
             }
             else
             {
-                var existingGroup = _dbContext.Groups.FirstOrDefault(x => x.Id == group.Id);
+                //var existingPlan = _dbContext.Plans.FirstOrDefault(x => x.Id == plan.Id);
 
-                existingGroup.Name = group.Name;
-                existingGroup.SpecialityId = group.SpecialityId;
-                existingGroup.Course = group.Course;
-                existingGroup.Quantity = group.Quantity;
+                //existingPlan.Lectures = plan.Name;
+                //existingPlan.SpecialityId = plan.SpecialityId;
+                //existingPlan.Course = plan.Course;
+                //existingPlan.Quantity = plan.Quantity;
 
-                _dbContext.SaveChanges();
-                return new ObjectResult(existingGroup);
+                //_dbContext.SaveChanges();
+                return new ObjectResult(existingPlan);
             }
         }
 
