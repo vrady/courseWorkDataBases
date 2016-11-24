@@ -3,8 +3,7 @@
 
     angular
         .module('scheduleKpi')
-        .controller('specialityController', specialityController)
-        .controller('specialityEditController', specialityEditController);
+        .controller('specialityController', specialityController);
 
     specialityController.$inject = ['$scope', 'Speciality', 'orderByFilter', '$route'];
     function specialityController($scope, Speciality, orderBy, $route) {
@@ -35,18 +34,21 @@
             })
         }
 
-    }
+        $scope.showEditForm = function (editSpeciality) {
+            setTimeout(function () {
+                Materialize.updateTextFields();
+            }, 200)
+            $scope.editSpeciality = editSpeciality;
+            $scope.editedSpecialityName = editSpeciality.name;
+            $scope.editedSpeciality = Speciality.get({ id: $scope.editSpeciality.id });
 
-    specialityEditController.$inject = ['$scope', 'Speciality', '$location', '$routeParams'];
-    function specialityEditController($scope, Speciality, $location, $routeParams) {
-
-        $scope.speciality = Speciality.get({ id: $routeParams.id });
-
-        $scope.editSpeciality = function () {
-            $scope.speciality.$save(function () {
-                $location.path('/')
-            })
+            $scope.editSpeciality = function () {
+                $scope.editedSpeciality.$save(function () {
+                    $route.reload();
+                })
+            }
         }
+
     }
 
 })();

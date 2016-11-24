@@ -16,7 +16,7 @@
             <tr class="group-item" ng-repeat="teacher in teachers">
                 <td>{{teacher.name}}</td>
                 <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteTeacher(teacher)">Видалити спеціальність</a></td>
-                <td><a class="btn waves-effect waves-light" href="/teachers/edit/{{teacher.id}}">Редагувати спеціальність</a></td>
+                <td><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(teacher)" data-target="modal2">Редагувати спеціальність</a></td>
             </tr>
         </tbody>
     </table>
@@ -35,9 +35,26 @@
         </form>
     </div>
 </div>
+<!-- Modal Structure -->
+<div id="modal2" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>Додати нового викладача {{editedTeacherName}}</h4>
+        <form name="editTeacherForm" ng-submit="editTeacher()">
+            <div class="input-field col s12">
+                <input id="groupName" type="text" name="name" ng-model="editTeacher.name" required /><br />
+                <label for="groupName">ПІБ викладача</label>
+            </div>
+            <button type="submit" ng-disabled="editTeacherForm.$invalid" class="btn waves-effect waves-light modal-close">Зберегти</button>
+            <a class="btn waves-effect waves-light modal-close">Відмінити</a>
+        </form>
+    </div>
+</div>
 <script>
     $(document).ready(function () {
         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-        $('.modal-trigger').leanModal();
+        setTimeout(function () {
+            $('.modal-trigger').leanModal();
+            $('.modal-trigger2').leanModal();
+        }, 1000)
     });
 </script>
