@@ -39,8 +39,6 @@ namespace courseWorkDataBases.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]Plan plan)
         {
-
-            throw new NotImplementedException();
             if(plan.Id == null)
             {
                 _dbContext.Plans.Add(plan);
@@ -51,41 +49,45 @@ namespace courseWorkDataBases.Controllers
             }
             else
             {
-                //var existingPlan = _dbContext.Plans.FirstOrDefault(x => x.Id == plan.Id);
+                var existingPlan = _dbContext.Plans.FirstOrDefault(x => x.Id == plan.Id);
 
-                //existingPlan.Lectures = plan.Name;
-                //existingPlan.SpecialityId = plan.SpecialityId;
-                //existingPlan.Course = plan.Course;
-                //existingPlan.Quantity = plan.Quantity;
+                existingPlan.Lectures = plan.Lectures;
+                existingPlan.SpecialityId = plan.SpecialityId;
+                existingPlan.Practices = plan.Practices;
+                existingPlan.Semester = plan.Semester;
+                existingPlan.SubjectId = plan.SubjectId;
+                existingPlan.TeacherId = plan.TeacherId;
 
-                //_dbContext.SaveChanges();
-                //return new ObjectResult(existingPlan);
+                _dbContext.SaveChanges();
+                return new ObjectResult(existingPlan);
             }
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]Group group)
+        public IActionResult Put(int id, [FromBody]Plan plan)
         {
-            var existingGroup = _dbContext.Groups.FirstOrDefault(x => x.Id == id);
+            var existingPlan = _dbContext.Plans.FirstOrDefault(x => x.Id == id);
 
-            existingGroup.Name = group.Name;
-            existingGroup.SpecialityId = group.SpecialityId;
-            existingGroup.Course = group.Course;
-            existingGroup.Quantity = group.Quantity;
+            existingPlan.Lectures = plan.Lectures;
+            existingPlan.SpecialityId = plan.SpecialityId;
+            existingPlan.Practices = plan.Practices;
+            existingPlan.Semester = plan.Semester;
+            existingPlan.SubjectId = plan.SubjectId;
+            existingPlan.TeacherId = plan.TeacherId;
 
             _dbContext.SaveChanges();
 
-            return new ObjectResult(existingGroup);
+            return new ObjectResult(existingPlan);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var group = _dbContext.Groups.FirstOrDefault(x => x.Id == id);
+            var plan = _dbContext.Plans.FirstOrDefault(x => x.Id == id);
 
-            _dbContext.Groups.Remove(group);
+            _dbContext.Plans.Remove(plan);
 
             _dbContext.SaveChanges();
 
