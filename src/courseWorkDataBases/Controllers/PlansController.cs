@@ -27,7 +27,26 @@ namespace courseWorkDataBases.Controllers
 
             if(plans.Any())
             {
-                return new ObjectResult(plans);
+                var fullPlans =
+                    from p in plans
+                    join s in _dbContext.Subjects on p.SpecialityId equals s.Id
+                    join t in _dbContext.Teachers on p.TeacherId equals t.Id
+                    join sp in _dbContext.Specialities on p.SpecialityId equals sp.Id
+                    select new Plan
+                    {
+                        Id = p.Id,
+                        Lectures = p.Lectures,
+                        Practices = p.Practices,
+                        Semester = p.Semester,
+                        Speciality = sp,
+                        SpecialityId = p.SpecialityId,
+                        Subject = s,
+                        SubjectId = p.SubjectId,
+                        Teacher = t,
+                        TeacherId = p.TeacherId
+                    };
+
+                return new ObjectResult(fullPlans);
             }
             else
             {
