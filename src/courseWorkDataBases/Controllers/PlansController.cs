@@ -29,7 +29,7 @@ namespace courseWorkDataBases.Controllers
             {
                 var fullPlans =
                     from p in plans
-                    join s in _dbContext.Subjects on p.SpecialityId equals s.Id
+                    join s in _dbContext.Subjects on p.SubjectId equals s.Id
                     join t in _dbContext.Teachers on p.TeacherId equals t.Id
                     join sp in _dbContext.Specialities on p.SpecialityId equals sp.Id
                     select new Plan

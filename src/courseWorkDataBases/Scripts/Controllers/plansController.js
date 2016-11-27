@@ -5,10 +5,13 @@
         .module('scheduleKpi')
         .controller('plansController', plansController);
 
-    plansController.$inject = ['$scope', 'Plan', 'orderByFilter', '$route', '$routeParams'];
-    function plansController($scope, Plan, orderBy, $route, $routeParams) {
-        $scope.plan = Plan.get({ id: $routeParams.id });
-        $scope.propertyName = 'name';
+    plansController.$inject = ['$scope', 'Plan', 'orderByFilter', '$route', '$routeParams', 'Subject', 'Teacher', 'Speciality'];
+    function plansController($scope, Plan, orderBy, $route, $routeParams, Subject, Teacher, Speciality) {
+        $scope.plan = Plan.query({ id: $routeParams.id });
+        $scope.subjects = Subject.query();
+        $scope.teachers = Teacher.query();
+        $scope.specialityName = Speciality.get({ id: $routeParams.id });
+        $scope.propertyName = 'subject.name';
         $scope.reverse = true;
 
         $scope.sortBy = function (propertyName) {
@@ -27,6 +30,7 @@
 
         $scope.newSubject = new Plan();
         $scope.addSubject = function () {
+            $scope.newSubject.specialityId = $routeParams.id;
             $scope.newSubject.$save(function () {
                 $route.reload();
             })
@@ -35,11 +39,11 @@
         $scope.showEditForm = function (editSubject) {
             setTimeout(function () {
                 Materialize.updateTextFields();
-            }, 200)
-            $scope.editSubject = editSubject;
-            $scope.editedSubjectName = editSubject.name;
-            $scope.editedSubject = Plan.get({ id: $scope.editSubject.id });
-
+            }, 200);
+            $scope.editedSubject = $scope.plan.find(function (elem) {
+                return elem.id == editSubject.id;
+            });
+            console.log($scope.editedSubject);
             $scope.editSubject = function () {
                 $scope.editedSubject.$save(function () {
                     $route.reload();
