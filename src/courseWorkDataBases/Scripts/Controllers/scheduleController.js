@@ -33,7 +33,7 @@
             },
             5: {
                 
-            },
+            }
         };
         $scope.days[1] = {
             number: 2,
@@ -44,7 +44,7 @@
                 audience: "1"
             },
             1: {
-                
+
             },
             2: {
                 name: "Комп'ютерні мережі",
@@ -69,8 +69,8 @@
                 teacher: "ас. Третяк В.А.",
                 type: "Лаб",
                 audience: "521"
-            },
-        }
+            }
+        };
         console.log($scope.days);
     }
 
