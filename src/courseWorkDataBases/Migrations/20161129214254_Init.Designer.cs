@@ -8,8 +8,8 @@ using courseWorkDataBases.Models;
 namespace courseWorkDataBases.Migrations
 {
     [DbContext(typeof(GroupsAppContext))]
-    [Migration("20161113200134_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20161129214254_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,7 +27,8 @@ namespace courseWorkDataBases.Migrations
                     b.Property<int>("Quantity");
 
                     b.Property<string>("Type")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(15);
 
                     b.HasKey("Id");
 
@@ -137,7 +138,8 @@ namespace courseWorkDataBases.Migrations
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Name")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.HasKey("Id");

@@ -26,7 +26,8 @@ namespace courseWorkDataBases.Migrations
                     b.Property<int>("Quantity");
 
                     b.Property<string>("Type")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(15);
 
                     b.HasKey("Id");
 

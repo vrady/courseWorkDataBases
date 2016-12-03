@@ -12,7 +12,8 @@
         'teachersService',
         'plansService',
         'subjectsService',
-        'audiencesService'
+        'audiencesService',
+        'scheduleService'
 
         // 3rd Party Modules
 
@@ -52,6 +53,10 @@
             .when('/login', {
                 templateUrl: 'partials/login.html',
                 controller: 'adminsController'
+            })
+            .when('/schedule', {
+                templateUrl: 'partials/schedule.html',
+                controller: 'scheduleController'
             })
             .otherwise({
                 redirectTo: '/'
