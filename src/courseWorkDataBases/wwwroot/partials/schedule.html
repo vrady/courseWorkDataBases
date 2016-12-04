@@ -1,7 +1,10 @@
 ﻿<div class="container">
     <h2 class="light">Розклад для групи {{group.name}}</h2>
-    <table class="bordered" ng-repeat="days in weeks track by $index">
+    <table class="bordered" ng-repeat="days in weeks track by $index" ng-init="weekIndex = $index">
         <thead>
+            <tr>
+                <td colspan="7"><h3>{{$index + 1}} тиждень</h3></td>
+            </tr>
             <tr>
                 <td></td>
                 <td>Понеділок</td>
@@ -16,14 +19,12 @@
             <tr ng-repeat="row in days track by $index">
                 <td>{{$index + 1}}</td>
                 <td ng-repeat="pair in row track by $index">
-                    <!--День: {{$index + 1}}<br />
-                    Номер пари: {{$parent.$index + 1}}<br />-->
                     {{pair.subject.name}}<br />
                     {{pair.teacher.fullName}}<br />
                     {{pair.type}}<br />
                     {{pair.audience.number}}<br />
-                    <a class="modal-trigger" ng-click="showEditLesson($parent.$index, $index, pair.scheduleId)" data-target="modal1">Редагувати</a><br />
-                    <a ng-click="deleteLesson(pair,row)">Видалити</a>
+                    <a style="cursor:pointer;" class="modal-trigger" ng-click="showEditLesson(weekIndex,$parent.$index, $index, pair.scheduleId)" data-target="modal1"><img src="../images/edit.png" width="20" /></a>
+                    <a style="cursor:pointer;" ng-click="deleteLesson(pair,days)"><img src="../images/delete.png" width="20" /></a>           
                 </td>
             </tr>
         </tbody>
@@ -39,11 +40,11 @@
             </select>
             <select name="subject" ng-model="newLesson.subjectId" required>
                 <option value="" disabled selected>Предмет</option>
-                <option ng-repeat="subject in subjects" value="{{subject.id}}">{{subject.name}}</option>
+                <option ng-repeat="plan in plans" value="{{plan.subject.id}}">{{plan.subject.name}}</option>
             </select>
             <select name="teacher" ng-model="newLesson.teacherId" required>
                 <option value="" disabled selected>Викладач</option>
-                <option ng-repeat="teacher in teachers" value="{{teacher.id}}">{{teacher.fullName}}</option>
+                <option ng-repeat="plan in plans" value="{{plan.teacher.id}}">{{plan.teacher.fullName}}</option>
             </select>
             <div class="input-field col s12">
                 <input id="type" type="text" name="type" ng-model="newLesson.type" required /><br />

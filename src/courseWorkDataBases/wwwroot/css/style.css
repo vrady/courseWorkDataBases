@@ -56,3 +56,7 @@
     .group-item.ng-leave.ng-leave-active {
         opacity: 0;
     }
+
+.modal.bottom-sheet {
+    max-height: 100% !important;
+}
