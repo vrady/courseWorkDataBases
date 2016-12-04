@@ -26,29 +26,30 @@ namespace courseWorkDataBases.Controllers
             var bundle = new ScheduleItem[5, 6];
 
             var schedules = from schedule in _dbContext.Schedules
-                             where schedule.GroupId == id
-                             join teacher in _dbContext.Teachers on schedule.TeacherId equals teacher.Id
-                             join audience in _dbContext.Audiences on schedule.AudienceId equals audience.Id
-                             join subject in _dbContext.Subjects on schedule.SubjectId equals subject.Id
-                             select new Schedule
-                             {
-                                 Teacher = teacher,
-                                 Audience = audience,
-                                 Day = schedule.Day,
-                                 Group = schedule.Group,
-                                 Id = schedule.Id,
-                                 LessonNumber = schedule.LessonNumber,
-                                 Type = schedule.Type,
-                                 Subject = subject
-                             };
+                            where schedule.GroupId == id
+                            join teacher in _dbContext.Teachers on schedule.TeacherId equals teacher.Id
+                            join audience in _dbContext.Audiences on schedule.AudienceId equals audience.Id
+                            join subject in _dbContext.Subjects on schedule.SubjectId equals subject.Id
+                            select new Schedule
+                            {
+                                Teacher = teacher,
+                                Audience = audience,
+                                Day = schedule.Day,
+                                Group = schedule.Group,
+                                Id = schedule.Id,
+                                LessonNumber = schedule.LessonNumber,
+                                Type = schedule.Type,
+                                Subject = subject
+                            };
 
-            foreach (var schedule in schedules)
+            foreach(var schedule in schedules)
             {
                 var day = schedule.Day;
                 var lessonNumber = schedule.LessonNumber;
 
                 bundle[lessonNumber, day] = new ScheduleItem
                 {
+                    ScheduleId = schedule.Id,
                     Audience = schedule.Audience,
                     Subject = schedule.Subject,
                     Teacher = schedule.Teacher,
@@ -62,14 +63,9 @@ namespace courseWorkDataBases.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post(int grid, int fg)
+        public void Post([FromBody] Schedule schedule)
         {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
+            var existingSchedule = _dbContext.Schedules;
         }
 
         // DELETE api/values/5

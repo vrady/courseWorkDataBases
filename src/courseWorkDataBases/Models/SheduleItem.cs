@@ -12,5 +12,6 @@ namespace courseWorkDataBases.Models
         public Audience Audience { get; set; }
         public string Type { get; set; }
         public Group Group { get; set; }
+        public int? ScheduleId { get; internal set; }
     }
 }
