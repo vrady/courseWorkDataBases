@@ -8,13 +8,13 @@
     scheduleController.$inject = ['$scope', 'Schedule', 'Group', 'Teacher', 'Subject', 'Audience', 'orderByFilter', '$route', '$routeParams'];
     function scheduleController($scope, Schedule, Group,Teacher,Subject, Audience, orderByFilter, $route, $routeParams) {
         $scope.group = Group.get({ id: $routeParams.id });
-        $scope.days = Schedule.query({ id: $routeParams.id });
+        $scope.weeks = Schedule.query({ id: $routeParams.id });
         $scope.groups = Group.query();
         $scope.subjects = Subject.query();
         $scope.teachers = Teacher.query();
         $scope.audiences = Audience.query();
 
-        console.log($scope.days);
+        console.log($scope.weeks);
 
         $scope.newLesson = new Schedule();
         $scope.showEditLesson = function (number, day, id) {
