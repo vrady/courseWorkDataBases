@@ -15,7 +15,7 @@ namespace courseWorkDataBases.Models
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Audience> Audiences { get; set; }
-        public DbSet<Shedule> Shedules { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Plan> Plans { get; set; }
     }
 }

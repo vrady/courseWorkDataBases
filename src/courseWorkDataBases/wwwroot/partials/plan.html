@@ -50,6 +50,10 @@
                 <option value="" disabled selected>Предмет</option>
                 <option ng-repeat="subject in subjects" value="{{subject.id}}">{{subject.name}}</option>
             </select>
+            <select name="subjectTeacher" ng-model="newSubject.teacherId" required>
+                <option value="" disabled selected>Викладач</option>
+                <option ng-repeat="teacher in teachers" value="{{teacher.id}}">{{teacher.fullName}}</option>
+            </select>
             <div class="input-field col s12">
                 <input id="subjectSemester" type="number" name="semester" ng-model="newSubject.semester" required /><br />
                 <label for="subjectSemester">Семестр</label>
@@ -62,10 +66,7 @@
                 <input id="subjectPractices" type="number" name="practices" ng-model="newSubject.practices" required /><br />
                 <label for="subjectPractices">Кількість практик</label>
             </div>
-            <select name="subjectTeacher" ng-model="newSubject.teacherId" required>
-                <option value="" disabled selected>Викладач</option>
-                <option ng-repeat="teacher in teachers" value="{{teacher.id}}">{{teacher.fullName}}</option>
-            </select>
+            
             <button type="submit" ng-disabled="addSubjectForm.$invalid" class="btn modal-close waves-effect waves-light">Зберегти</button>
             <a class="btn waves-effect modal-close waves-light">Відмінити</a>
         </form>

@@ -7,6 +7,6 @@
     Schedule.$inject = ['$resource'];
 
     function Schedule($resource) {
-        return $resource('/api/schedule/:id')
+        return $resource('/api/schedules/:id')
     }
 })();

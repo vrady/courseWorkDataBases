@@ -11,7 +11,7 @@ namespace courseWorkDataBases.Models
         public Teacher()
         {
             Plans = new HashSet<Plan>();
-            Shedules = new HashSet<Shedule>();
+            Shedules = new HashSet<Schedule>();
         }
 
         [Key]
@@ -23,6 +23,6 @@ namespace courseWorkDataBases.Models
         public string FullName { get; set; }
 
         public virtual ICollection<Plan> Plans { get; set; }
-        public virtual ICollection<Shedule> Shedules { get; set; }
+        public virtual ICollection<Schedule> Shedules { get; set; }
     }
 }

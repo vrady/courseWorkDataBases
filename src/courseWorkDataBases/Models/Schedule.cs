@@ -2,7 +2,7 @@
 
 namespace courseWorkDataBases.Models
 {
-    public class Shedule
+    public class Schedule
     {
         [Key]
         public int? Id { get; set; }

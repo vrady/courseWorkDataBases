@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace courseWorkDataBases.Models
 {
-    public class SheduleItem
+    public class ScheduleItem
     {
         public Teacher Teacher { get; set; }
         public Subject Subject { get; set; }
         public Audience Audience { get; set; }
         public string Type { get; set; }
-        public Group Group { get; internal set; }
+        public Group Group { get; set; }
     }
 }

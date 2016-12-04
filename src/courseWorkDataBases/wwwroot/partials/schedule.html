@@ -1,6 +1,6 @@
 ﻿<div class="container">
-    <h2 class="light">Розклад</h2>
-    <table class="striped">
+    <h2 class="light">Розклад для групи {{group.name}}</h2>
+    <table class="bordered">
         <thead>
             <tr>
                 <td></td>
@@ -14,14 +14,52 @@
         </thead>
         <tbody>
             <tr ng-repeat="row in days">
-                <td>{{row.number}}</td>
+                <td>{{$index + 1}}</td>
                 <td ng-repeat="pair in row">
-                    {{pair.name}}<br />
-                    {{pair.teacher}}<br />
+                    <!--День: {{$index + 1}}<br />
+                    Номер пари: {{$parent.$index + 1}}<br />-->
+                    {{pair.subject.name}}<br />
+                    {{pair.teacher.fullName}}<br />
                     {{pair.type}}<br />
-                    {{pair.audience}}
+                    {{pair.audience.number}}<br />
+                    <a class="modal-trigger" ng-click="showEditLesson($parent.$index, $index)" data-target="modal1">Редагувати</a><br />
+                    <a class="modal-trigger" ng-click="deleteLesson(pair)" data-target="modal1">Видалити</a>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+<div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>Редагувати пару</h4>
+        <form name="addLessonForm" ng-submit="editLesson()">
+            <select name="audience" ng-model="newLesson.audienceId" required>
+                <option value="" disabled selected>Аудиторія</option>
+                <option ng-repeat="audience in audiences" value="{{audience.id}}">{{audience.number}}</option>
+            </select>
+            <select name="subject" ng-model="newLesson.subjectId" required>
+                <option value="" disabled selected>Предмет</option>
+                <option ng-repeat="subject in subjects" value="{{subject.id}}">{{subject.name}}</option>
+            </select>
+            <select name="teacher" ng-model="newLesson.teacherId" required>
+                <option value="" disabled selected>Викладач</option>
+                <option ng-repeat="teacher in teachers" value="{{teacher.id}}">{{teacher.fullName}}</option>
+            </select>
+            <div class="input-field col s12">
+                <input id="type" type="text" name="type" ng-model="newLesson.type" required /><br />
+                <label for="type">Тип</label>
+            </div>
+            
+            <button type="submit" ng-disabled="addLessonForm.$invalid" class="btn modal-close waves-effect waves-light">Зберегти</button>
+            <a class="btn waves-effect modal-close waves-light">Відмінити</a>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('.modal-trigger').leanModal();
+            $('select').material_select();
+        },1000)
+    });
+</script>

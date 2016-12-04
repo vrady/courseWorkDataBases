@@ -24,7 +24,7 @@
         $routeProvider
             .when('/', {
                 templateUrl: 'partials/main.html',
-                controller: 'groupsController'
+                controller: 'mainController'
             })
             .when('/groups', {
                 templateUrl: 'partials/groups.html',
@@ -54,7 +54,7 @@
                 templateUrl: 'partials/login.html',
                 controller: 'adminsController'
             })
-            .when('/schedule', {
+            .when('/schedules/:id', {
                 templateUrl: 'partials/schedule.html',
                 controller: 'scheduleController'
             })

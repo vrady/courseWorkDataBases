@@ -7,7 +7,7 @@ namespace courseWorkDataBases.Models
     {
         public Audience()
         {
-            Shedules = new HashSet<Shedule>();
+            Shedules = new HashSet<Schedule>();
         }
 
         [Key]
@@ -23,6 +23,6 @@ namespace courseWorkDataBases.Models
         [MaxLength(15)]
         public string Type { get; set; }
 
-        public virtual ICollection<Shedule> Shedules { get; set; }
+        public virtual ICollection<Schedule> Shedules { get; set; }
     }
 }

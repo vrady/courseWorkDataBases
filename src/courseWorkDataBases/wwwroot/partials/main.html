@@ -3,13 +3,23 @@
         <br /><br />
         <form name="searchSchedule" ng-submit="" class="col l4 offset-l4 s12 m4 offset-m4">
             <div class="input-field col s12">
-                <input id="searchGroup" ng-model="group.name" type="text" required />
-                <label for="searchGroup">Введіть назву групи</label>
+                <!--<input id="searchGroup" ng-model="group.name" type="text" required />
+                <label for="searchGroup">Введіть назву групи</label>-->
+                <select name="groupId" ng-model="groupId" required>
+                    <option value="" disabled selected>Оберіть групу</option>
+                    <option ng-repeat="group in groups" value="{{group.id}}">{{group.name}}</option>
+                </select>
             </div>
             <div class="center-align">
-                <button type="button" ng-disabled="searchSchedule.$invalid" class="btn waves-effect waves-light" ng-href="/schedule">Розклад</button>
-                <a href="/schedule">Розклад</a>
+                <a ng-href="/schedules/{{groupId}}"><button type="button" ng-disabled="searchSchedule.$invalid" class="btn waves-effect waves-light">Розклад</button></a>
             </div>
         </form>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('select').material_select();
+        },200)
+    });
+</script>
