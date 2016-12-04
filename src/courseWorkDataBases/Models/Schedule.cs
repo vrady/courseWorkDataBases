@@ -11,8 +11,12 @@ namespace courseWorkDataBases.Models
         public int GroupId { get; set; }
 
         [Required]
-        [Range(1, 6)]
+        [Range(0, 5)]
         public int Day { get; set; }
+
+        [Required]
+        [Range(0, 1)]
+        public int Week { get; set; }
 
         [Required]
         public int SubjectId { get; set; }
@@ -28,7 +32,7 @@ namespace courseWorkDataBases.Models
         public string Type { get; set; }
 
         [Required]
-        [Range(1, 5)]
+        [Range(0, 4)]
         public int LessonNumber { get; set; }
 
         public virtual Subject Subject { get; set; }

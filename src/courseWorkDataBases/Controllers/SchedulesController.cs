@@ -21,9 +21,9 @@ namespace courseWorkDataBases.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ScheduleItem[,] Get(int id)
+        public ScheduleItem[,,] Get(int id)
         {
-            var bundle = new ScheduleItem[5, 6];
+            var bundle = new ScheduleItem[2, 5, 6];
 
             var schedules = from schedule in _dbContext.Schedules
                             where schedule.GroupId == id
@@ -39,15 +39,17 @@ namespace courseWorkDataBases.Controllers
                                 Id = schedule.Id,
                                 LessonNumber = schedule.LessonNumber,
                                 Type = schedule.Type,
-                                Subject = subject
+                                Subject = subject,
+                                Week = schedule.Week
                             };
 
             foreach(var schedule in schedules)
             {
                 var day = schedule.Day;
                 var lessonNumber = schedule.LessonNumber;
+                var week = schedule.Week;
 
-                bundle[lessonNumber, day] = new ScheduleItem
+                bundle[week, lessonNumber, day] = new ScheduleItem
                 {
                     ScheduleId = schedule.Id,
                     Audience = schedule.Audience,
@@ -79,6 +81,7 @@ namespace courseWorkDataBases.Controllers
 
                 existingSchedule.AudienceId = schedule.AudienceId;
                 existingSchedule.Day = schedule.Day;
+                existingSchedule.Week = schedule.Week;
                 existingSchedule.GroupId = schedule.GroupId;
                 existingSchedule.SubjectId = schedule.SubjectId;
                 existingSchedule.LessonNumber = schedule.LessonNumber;

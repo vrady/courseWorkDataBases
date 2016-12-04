@@ -39,11 +39,6 @@
             $scope.delRow.$remove({ id: $scope.deletedLesson.scheduleId }, function () {
                 $route.reload();
             })
-            //$scope.days.$remove({id: $scope.deletedLesson.scheduleId}, function () {
-            //    $route.reload();
-            //})
         }
-        
     }
-
 })();
