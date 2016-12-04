@@ -17,11 +17,12 @@
         console.log($scope.days);
 
         $scope.newLesson = new Schedule();
-        $scope.showEditLesson = function (number, day) {
+        $scope.showEditLesson = function (number, day, id) {
             console.log(number, day);
             $scope.newLesson.lessonNumber = number;
             $scope.newLesson.day = day;
             $scope.newLesson.groupId = $routeParams.id;
+            $scope.newLesson.scheduleId = id;
             $scope.editLesson = function () {
                 console.log($scope.newLesson);
                 $scope.newLesson.$save(function () {
