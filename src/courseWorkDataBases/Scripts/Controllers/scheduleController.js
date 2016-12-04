@@ -22,7 +22,7 @@
             $scope.newLesson.lessonNumber = number;
             $scope.newLesson.day = day;
             $scope.newLesson.groupId = $routeParams.id;
-            $scope.newLesson.scheduleId = id;
+            $scope.newLesson.id = id;
             $scope.editLesson = function () {
                 console.log($scope.newLesson);
                 $scope.newLesson.$save(function () {

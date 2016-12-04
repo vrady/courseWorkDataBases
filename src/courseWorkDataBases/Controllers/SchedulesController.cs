@@ -63,15 +63,45 @@ namespace courseWorkDataBases.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] Schedule schedule)
+        public IActionResult Post([FromBody] Schedule schedule)
         {
-            var existingSchedule = _dbContext.Schedules;
+            if(schedule.Id == null)
+            {
+                _dbContext.Schedules.Add(schedule);
+
+                _dbContext.SaveChanges();
+
+                return new ObjectResult(schedule);
+            }
+            else
+            {
+                var existingSchedule = _dbContext.Schedules.FirstOrDefault(x => x.Id == schedule.Id);
+
+                existingSchedule.AudienceId = schedule.AudienceId;
+                existingSchedule.Day = schedule.Day;
+                existingSchedule.GroupId = schedule.GroupId;
+                existingSchedule.SubjectId = schedule.SubjectId;
+                existingSchedule.LessonNumber = schedule.LessonNumber;
+                existingSchedule.TeacherId = schedule.TeacherId;
+                existingSchedule.Type = schedule.Type;
+
+                _dbContext.SaveChanges();
+
+                return new ObjectResult(existingSchedule);
+            }
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var existingSchdule = _dbContext.Schedules.FirstOrDefault(x => x.Id == id);
+
+            _dbContext.Schedules.Remove(existingSchdule);
+
+            _dbContext.SaveChanges();
+
+            return new StatusCodeResult(200);
         }
     }
 }

@@ -23,7 +23,7 @@
                     {{pair.type}}<br />
                     {{pair.audience.number}}<br />
                     <a class="modal-trigger" ng-click="showEditLesson($parent.$index, $index, pair.scheduleId)" data-target="modal1">Редагувати</a><br />
-                    <a class="modal-trigger" ng-click="deleteLesson(pair)" data-target="modal1">Видалити</a>
+                    <a ng-click="deleteLesson(pair)">Видалити</a>
                 </td>
             </tr>
         </tbody>
