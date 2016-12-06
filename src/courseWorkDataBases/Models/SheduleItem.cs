@@ -13,5 +13,6 @@ namespace courseWorkDataBases.Models
         public string Type { get; set; }
         public Group Group { get; set; }
         public int? ScheduleId { get; internal set; }
+        public int Week { get; internal set; }
     }
 }
