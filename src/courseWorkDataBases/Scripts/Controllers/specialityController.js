@@ -7,6 +7,7 @@
 
     specialityController.$inject = ['$scope', 'Speciality', 'orderByFilter', '$route'];
     function specialityController($scope, Speciality, orderBy, $route) {
+        $scope.authorized = authorized;
 
         $scope.specialities = Speciality.query();
 

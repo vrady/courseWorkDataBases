@@ -1,6 +1,7 @@
-﻿<div class="container">
+﻿<navbar></navbar>
+<div class="container">
     <h2 class="light">Список спеціальностей</h2>
-    <button class="btn waves-effect waves-default modal-trigger" data-target="modal1">Додати нову спеціальність</button>
+    <button ng-show="authorized" class="btn waves-effect waves-default modal-trigger" data-target="modal1">Додати нову спеціальність</button>
     <table class="striped">
         <thead>
             <tr>
@@ -8,16 +9,16 @@
                     <button class="btn-large transparent black-text" ng-click="sortBy('name')"><h6>Назва спеціальності</h6></button>
                     <span ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
                 </th>
-                <th></th>
-                <th></th>
+                <th ng-show="authorized"></th>
+                <th ng-show="authorized"></th>
             </tr>
         </thead>
         <tbody>
             <tr class="group-item" ng-repeat="speciality in specialities">
                 <td class="center-align">{{speciality.name}}</td>
                 <td><a class="btn waves-effect waves-light green lighten-2" ng-href="/plans/{{speciality.id}}">План</a></td>
-                <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteSpeciality(speciality)">Видалити спеціальність</a></td>
-                <td><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(speciality)" data-target="modal2">Редагувати спеціальність</a></td>
+                <td ng-show="authorized"><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteSpeciality(speciality)">Видалити спеціальність</a></td>
+                <td ng-show="authorized"><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(speciality)" data-target="modal2">Редагувати спеціальність</a></td>
             </tr>
         </tbody>
     </table>

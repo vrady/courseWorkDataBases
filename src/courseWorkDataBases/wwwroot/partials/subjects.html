@@ -1,6 +1,7 @@
-﻿<div class="container">
+﻿<navbar></navbar>
+<div class="container">
     <h2 class="light">Список предметів</h2>
-    <button class="btn waves-effect waves-default modal-trigger" data-target="modal1">Додати новий предмет</button>
+    <button ng-show="authorized" class="btn waves-effect waves-default modal-trigger" data-target="modal1">Додати новий предмет</button>
     <table class="striped">
         <thead>
             <tr>
@@ -8,15 +9,15 @@
                     <button class="btn-large transparent black-text" ng-click="sortBy('name')"><h6>Назва предмета</h6></button>
                     <span ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
                 </th>
-                <th></th>
-                <th></th>
+                <th ng-show="authorized"></th>
+                <th ng-show="authorized"></th>
             </tr>
         </thead>
         <tbody>
             <tr class="group-item" ng-repeat="subject in subjects">
                 <td class="center-align">{{subject.name}}</td>
-                <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteSubject(subject)">Видалити предмет</a></td>
-                <td><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(subject)" data-target="modal2">Редагувати предмет</a></td>
+                <td ng-show="authorized"><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteSubject(subject)">Видалити предмет</a></td>
+                <td ng-show="authorized"><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(subject)" data-target="modal2">Редагувати предмет</a></td>
             </tr>
         </tbody>
     </table>

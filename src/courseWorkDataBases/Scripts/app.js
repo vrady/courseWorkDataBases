@@ -1,4 +1,5 @@
-﻿(function () {
+﻿var authorized = false;
+(function () {
     'use strict';
 
     angular.module('scheduleKpi', [
@@ -50,7 +51,6 @@
                 templateUrl: 'partials/plan.html',
                 controller: 'plansController'
             })
-            .when('/account', {})
             .when('/schedules/:id', {
                 templateUrl: 'partials/schedule.html',
                 controller: 'scheduleController'
@@ -61,7 +61,22 @@
 
     }]).directive('navbar', function () {
         return {
-            templateUrl: 'partials/navbar.html'
+            templateUrl: 'partials/navbar.html',
+            controller: ['$scope', '$route', function navbarController($scope, $route) {
+                $scope.authorized = authorized;
+                $scope.login = function () {
+                    var newWin = window.open("/account", "Login", "width=500,height=250");
+                    newWin.onunload = function () {
+                        setTimeout(function () {
+                            $route.reload();
+                        }, 500)
+                        
+                    }
+                }
+                $scope.signOut = function () {
+                    authorized = false;
+                }
+            }]
         }
     });
 

@@ -7,6 +7,7 @@
 
     plansController.$inject = ['$scope', 'Plan', 'orderByFilter', '$route', '$routeParams', 'Subject', 'Teacher', 'Speciality'];
     function plansController($scope, Plan, orderBy, $route, $routeParams, Subject, Teacher, Speciality) {
+        $scope.authorized = authorized;
         $scope.plan = Plan.query({ id: $routeParams.id });
         $scope.subjects = Subject.query();
         $scope.teachers = Teacher.query();

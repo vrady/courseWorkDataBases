@@ -7,7 +7,7 @@
 
     teachersController.$inject = ['$scope', 'Teacher', 'orderByFilter','$route'];
     function teachersController($scope, Teacher, orderBy, $route) {
-
+        $scope.authorized = authorized;
         $scope.teachers = Teacher.query();
 
         $scope.propertyName = 'id';

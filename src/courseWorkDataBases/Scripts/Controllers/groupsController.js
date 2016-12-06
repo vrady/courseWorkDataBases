@@ -8,6 +8,7 @@
     groupsController.$inject = ['$scope', 'Group', 'Speciality', 'orderByFilter', '$route'];
 
     function groupsController($scope, Group, Speciality, orderBy, $route) {
+        $scope.authorized = authorized;
         $scope.groups = Group.query();
         $scope.specialities = Speciality.query();
         $scope.propertyName = 'id';

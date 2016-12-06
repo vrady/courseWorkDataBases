@@ -9,7 +9,8 @@
                     <li><a href="/teachers" class="thin">Викладачі</a></li>
                     <li><a href="/subjects" class="thin">Предмети</a></li>
                     <li><a href="/audiences" class="thin">Аудиторії</a></li>
-                    <li><a href="/account" class="thin">Увійти</a></li>
+                    <li ng-show="!authorized"><a ng-click="login()" class="thin">Увійти</a></li>
+                    <li ng-show="authorized"><a ng-click="signOut()" ng-href="/" class="thin">Вийти</a></li>
                 </ul>
             </div>
         </div>

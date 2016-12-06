@@ -55,7 +55,7 @@ namespace courseWorkDataBases
             }).AddEntityFrameworkStores<GroupsAppContext>();
 
             services.AddDbContext<GroupsAppContext>(options =>
-                options.UseSqlServer("Data Source=DESKTOP-NEO5AF1\\SQLEXPRESS;Initial Catalog=CourseWorkDB;Integrated Security=True"));
+                options.UseSqlServer("Data Source=DESKTOP-8932SRH\\SQLEXPRESS;Initial Catalog=courseWork;Integrated Security=True"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

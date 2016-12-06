@@ -7,6 +7,7 @@
 
     audiencesController.$inject = ['$scope', 'Audience', 'orderByFilter', '$route'];
     function audiencesController($scope, Audience, orderBy, $route) {
+        $scope.authorized = authorized;
 
         $scope.audiences = Audience.query();
 

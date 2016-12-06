@@ -1,6 +1,7 @@
-﻿<div class="container">
+﻿<navbar></navbar>
+<div class="container">
     <h2 class="light">Список груп</h2>
-    <a class="btn waves-effect waves-light modal-trigger" data-target="modal1">Додати нову групу</a>
+    <a ng-show="authorized" class="btn waves-effect waves-light modal-trigger" data-target="modal1">Додати нову групу</a>
     <table class="striped">
         <thead>
             <tr>
@@ -30,8 +31,8 @@
                 <td class="center-align">{{group.speciality.name}}</td>
                 <td class="center-align">{{group.course}}</td>
                 <td class="center-align">{{group.quantity}}</td>
-                <td><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteGroup(group)">Видалити групу</a></td>
-                <td><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(group)" data-target="modal2">Редагувати групу</a></td>
+                <td ng-show="authorized"><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteGroup(group)">Видалити групу</a></td>
+                <td ng-show="authorized"><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(group)" data-target="modal2">Редагувати групу</a></td>
             </tr>
         </tbody>
     </table>

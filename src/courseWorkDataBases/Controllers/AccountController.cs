@@ -37,7 +37,7 @@ namespace courseWorkDataBases.Controllers
             
             if(result == Microsoft.AspNetCore.Identity.SignInResult.Success)
             {
-                ViewBag.Authorized = true;
+                ViewBag.Authorized = "true";
 
                 return View("Authorized");
             }
@@ -50,7 +50,7 @@ namespace courseWorkDataBases.Controllers
         {
             _signInManager.SignOutAsync().Wait();
 
-            ViewBag.Authorized = false;
+            ViewBag.Authorized = "false";
 
             return View("Authorized");
         }

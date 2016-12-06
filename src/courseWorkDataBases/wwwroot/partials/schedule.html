@@ -1,4 +1,6 @@
-﻿<div class="container">
+﻿<navbar></navbar>
+<div class="row">
+<div class="col l10 offset-l1">
     <h2 class="light">Розклад для групи {{group.name}}</h2>
     <table class="bordered" ng-repeat="days in weeks track by $index" ng-init="weekIndex = $index">
         <thead>
@@ -23,13 +25,14 @@
                     {{pair.teacher.fullName}}<br />
                     {{pair.type}}<br />
                     {{pair.audience.number}}<br />
-                    <a style="cursor:pointer;" class="modal-trigger" ng-click="showEditLesson(weekIndex,$parent.$index, $index, pair.scheduleId)" data-target="modal1"><img src="../images/edit.png" width="20" /></a>
-                    <a style="cursor:pointer;" ng-click="deleteLesson(pair,days)"><img src="../images/delete.png" width="20" /></a>           
+                    <a ng-show="authorized" style="cursor:pointer;" class="modal-trigger" ng-click="showEditLesson(weekIndex,$parent.$index, $index, pair.scheduleId)" data-target="modal1"><img src="../images/edit.png" style="opacity:.6" width="20" /></a>
+                    <a ng-show="authorized" style="cursor:pointer;" ng-click="deleteLesson(pair,days)"><img src="../images/delete.png" style="opacity:.6" width="20" /></a>           
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+    </div>
 <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
         <h4>Редагувати пару</h4>

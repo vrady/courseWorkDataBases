@@ -7,6 +7,7 @@
 
     scheduleController.$inject = ['$scope', 'Schedule', 'Group', 'Teacher','Plan', 'Subject', 'Audience', 'orderByFilter', '$route', '$routeParams'];
     function scheduleController($scope, Schedule, Group, Teacher, Plan, Subject, Audience, orderByFilter, $route, $routeParams) {
+        $scope.authorized = authorized;
         $scope.group = Group.get({ id: $routeParams.id }, function (res) {
             Plan.query({ id: res.specialityId }, function (res) {
                 $scope.plans = res.filter(function (el) {

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html ng-app="scheduleKpi">
+<html>
 <head>
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-resource/angular-resource.min.js"></script>
@@ -7,9 +7,9 @@
     <script src="lib/angular-animate/angular-animate.min.js"></script>
     <script src="js/app.js"></script>
     <script>
-        angular.module('scheduleKpi').value('authorized', @ViewBag.Authorized);
+        window.opener.authorized = @ViewBag.Authorized;
+        window.close();
     </script>
-    <meta http-equiv="refresh" content="0; url=/" /> 
 </head>
 <body>
 </body>

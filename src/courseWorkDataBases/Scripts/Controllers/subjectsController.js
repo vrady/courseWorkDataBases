@@ -7,6 +7,7 @@
 
     subjectsController.$inject = ['$scope', 'Subject', 'orderByFilter', '$route'];
     function subjectsController($scope, Subject, orderBy, $route) {
+        $scope.authorized = authorized;
 
         $scope.subjects = Subject.query();
 
