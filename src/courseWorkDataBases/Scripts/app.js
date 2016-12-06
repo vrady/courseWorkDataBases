@@ -75,6 +75,7 @@
                 }
                 $scope.signOut = function () {
                     authorized = false;
+                    $route.reload();
                 }
             }]
         }
