@@ -50,17 +50,12 @@
                 templateUrl: 'partials/plan.html',
                 controller: 'plansController'
             })
-            .when('/login', {
-                templateUrl: 'partials/login.html',
-                controller: 'adminsController'
-            })
+            .when('/account', {})
             .when('/schedules/:id', {
                 templateUrl: 'partials/schedule.html',
                 controller: 'scheduleController'
             })
-            .otherwise({
-                redirectTo: '/'
-            });
+            .otherwise('/');
 
         $locationProvider.html5Mode(true);
 

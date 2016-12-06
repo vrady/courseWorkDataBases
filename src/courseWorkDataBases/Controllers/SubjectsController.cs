@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using courseWorkDataBases.Models;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -43,6 +44,7 @@ namespace courseWorkDataBases.Controllers
         }
 
         // POST api/values
+        [Authorize]
         [HttpPost]
         public IActionResult Post([FromBody]Subject subject)
         {
@@ -67,6 +69,7 @@ namespace courseWorkDataBases.Controllers
         }
 
         // PUT api/values/5
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody]Subject subject)
         {
@@ -80,6 +83,7 @@ namespace courseWorkDataBases.Controllers
         }
 
         // DELETE api/values/5
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace courseWorkDataBases.Models
 {
-    public class GroupsAppContext : DbContext
+    public class GroupsAppContext : IdentityDbContext<IdentityUser>
     {
         public GroupsAppContext(DbContextOptions options) : base(options) { }
         public DbSet<Group> Groups { get; set; }
