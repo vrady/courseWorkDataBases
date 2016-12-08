@@ -23,9 +23,9 @@
         </thead>
         <tbody>
             <tr class="group-item" ng-repeat="audience in audiences">
-                <td class="center-align">{{audience.number}}</td>
-                <td class="center-align">{{audience.quantity}}</td>
-                <td class="center-align">{{audience.type}}</td>
+                <td>{{audience.number}}</td>
+                <td>{{audience.quantity}}</td>
+                <td>{{audience.type}}</td>
                 <td ng-show="authorized"><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteAudience(audience)">Видалити аудиторію</a></td>
                 <td ng-show="authorized"><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(audience)" data-target="modal2">Редагувати предмет</a></td>
             </tr>

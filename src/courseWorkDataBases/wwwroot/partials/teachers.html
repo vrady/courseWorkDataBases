@@ -15,7 +15,7 @@
         </thead>
         <tbody>
             <tr class="group-item" ng-repeat="teacher in teachers">
-                <td class="center-align">{{teacher.fullName}}</td>
+                <td>{{teacher.fullName}}</td>
                 <td ng-show="authorized"><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteTeacher(teacher)">Видалити викладача</a></td>
                 <td ng-show="authorized"><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(teacher)" data-target="modal2">Редагувати викладача</a></td>
             </tr>

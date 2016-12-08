@@ -15,7 +15,7 @@
         </thead>
         <tbody>
             <tr class="group-item" ng-repeat="subject in subjects">
-                <td class="center-align">{{subject.name}}</td>
+                <td>{{subject.name}}</td>
                 <td ng-show="authorized"><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteSubject(subject)">Видалити предмет</a></td>
                 <td ng-show="authorized"><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(subject)" data-target="modal2">Редагувати предмет</a></td>
             </tr>

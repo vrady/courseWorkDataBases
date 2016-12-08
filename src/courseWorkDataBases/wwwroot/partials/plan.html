@@ -31,11 +31,11 @@
         </thead>
         <tbody>
             <tr class="group-item" ng-repeat="subject in plan">
-                <td class="center-align">{{subject.subject.name}}</td>
+                <td>{{subject.subject.name}}</td>
                 <td class="center-align">{{subject.semester}}</td>
                 <td class="center-align">{{subject.lectures}}</td>
                 <td class="center-align">{{subject.practices}}</td>
-                <td class="center-align">{{subject.teacher.fullName}}</td>
+                <td>{{subject.teacher.fullName}}</td>
                 <td ng-show="authorized"><a class="btn waves-effect waves-light red lighten-2" ng-click="deleteSubject(subject)">Видалити предмет</a></td>
                 <td ng-show="authorized"><a class="btn waves-effect waves-light modal-trigger2" ng-click="showEditForm(subject)" data-target="modal2">Редагувати предмет</a></td>
             </tr>
@@ -61,7 +61,7 @@
             </div>
             <div class="input-field col s12">
                 <input id="subjectLectures" type="number" name="lectures" ng-model="newSubject.lectures" required /><br />
-                <label for="subjectLectures">Кількість леккцій</label>
+                <label for="subjectLectures">Кількість лекцій</label>
             </div>
             <div class="input-field col s12">
                 <input id="subjectPractices" type="number" name="practices" ng-model="newSubject.practices" required /><br />
@@ -88,7 +88,7 @@
             </div>
             <div class="input-field col s12">
                 <input id="subjectLectures" type="number" name="lectures" ng-model="editedSubject.lectures" required /><br />
-                <label for="subjectLectures">Кількість леккцій</label>
+                <label for="subjectLectures">Кількість лекцій</label>
             </div>
             <div class="input-field col s12">
                 <input id="subjectPractices" type="number" name="practices" ng-model="editedSubject.practices" required /><br />
