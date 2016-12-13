@@ -44,7 +44,7 @@ namespace courseWorkDataBases.Controllers
                                 Week = schedule.Week
                             };
 
-            foreach(var schedule in schedules)
+            foreach (var schedule in schedules)
             {
                 var day = schedule.Day;
                 var lessonNumber = schedule.LessonNumber;
